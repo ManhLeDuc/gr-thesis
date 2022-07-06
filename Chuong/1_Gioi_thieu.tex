@@ -1,0 +1,63 @@
+\documentclass[../DoAn.tex]{subfiles}
+\begin{document}
+
+\section{Đặt vấn đề}
+\label{section:1.1}
+Công nghệ chuỗi khối (blockchain) được cho là một trong những công nghệ cốt lỗi trong cuộc cách mạng công nghiệp lần thứ 4. Tính đột phá của công nghệ chuỗi khối nằm ở việc cho cho phép những giao dịch có giá trị lớn được thực hiện một cách minh bạch, chính xác, công bằng mà không cần đến sự chứng thực và phân xử của một bên thứ ba. Ví dụ như mạng chuỗi khối đầu tiên, Bitcoin, cho phép hai bên ở mọi nơi chuyển tiền (đồng Bitcoin) mà không cần thông qua một bên trung gian (thường là ngân hàng). Mạng Ethereum tiến thêm một bước nữa khi không chỉ đối với giao dịch tiền tệ, Ethereum còn đảm bảo các nghiệp vụ phức tạp với nhiều điều khoản và điều kiện sẽ được các bên liên quan thực thi một cách chuẩn chỉ thông qua ứng dụng phi tập trung.
+
+Để có thể loại bỏ người trung gian khỏi các giao dịch và tác vụ cốt lỗi nằm ở một cuốn sổ cái kỹ thuật số. Cuốn sổ cái này là một chuỗi các khổi dữ liệu (nên có tên là chuỗi khối) và có các đặc tính sau:
+\begin{itemize}
+	\item Tính phân tán: Cuốn sổ cái được lưu trữ trên nhiều máy tính khác nhau, đảm bảo khả năng chịu lỗi.
+	\item Tính bảo mật: Dữ liệu lưu trữ trên cuốn sổ cái là không thể giả mạo.
+	\item Tính minh bạch: Dữ liệu một khi đã được cập nhật trên sổ cái thì không ai có thể thay đổi hay xóa bỏ.
+\end{itemize}
+
+Ứng dụng đặc tính này trong các nghiệp vụ, những giao dịch liên quan đến nghiệp vụ đó một khi đã được lưu lại trên blockchain thì sẽ tồn tại mãi mãi trên sổ cái. Thông qua nội dung của cuốn sổ cái, việc truy xuất nguồn gốc và xác nhận tính minh bạch của nghiệp vụ có thể được thực hiện một cách nhanh chóng và tự động.
+
+Mạng Bitcoin và Ethereum nêu ở trên là mạng chuối khối công khai (public blockchain). Đối với loại mạng này, mọi người đều có thể tham gia, thực hiện tương tác hay truy vấn dữ liệu. Tuy nhiên, đối với một số nghiệp vụ, việc thông tin giao dịch và số liệu hoạt động của các doanh nghiệp bị công khai có thể là một vấn đề lớn. Do vậy việc sử dụng loại mạng công khai vào trong nghiệp vụ giữa các tổ chức, liên doanh đôi khi là bất khả thi. Để giải quyết vấn đề này mạng chuỗi khối riêng tư (private blockchain) ra đời. Để có thể được ứng dụng vào các hoạt động giữa các doanh nghiệp, ngoài tính phân tán, bảo mật và minh bạch dữ liệu như mạng công khai, mạng riêng tư thường thêm có các đặc điểm sau:
+\begin{itemize}
+	\item Danh tính của những bên tham gia vào mạng cần phải xác thực được.
+	\item Không phải ai cũng có thể tham gia, truy vấn dữ liệu hay tương tác với mạng. Chỉ các cá nhân, tổ chức có đủ quyền mới có thể thực hiện các hành động này.
+	\item Tốc độ xử lý giao dịch cao hơn so với mạng chuỗi khối công khai.
+\end{itemize}
+
+Với những ưu điểm mà mạng chuỗi khối riêng tư mang lại, việc các doanh nghiệp ứng dụng mạng riêng tư vào nghiệp vụ hoàn toàn có thể giúp nâng cao hiệu suất công việc. Tuy vậy, việc triển khai, quản lý hệ thống mạng này yêu cầu cơ sở hạ tầng và kiến thức chuyên môn đặc thù. Thêm vào đó, việc viết và triển khai một ứng dụng phi tập trung phục vụ cho nghiệp vụ cũng là một thử thách lớn, đặc biệt là với những ai chưa từng tiếp xúc với mạng chuỗi khối, một công nghệ mới và có phần phức tạp. Nhận thấy vấn đề trên, tôi đã quyết định phát triển một hệ thống tự động triển khai mạng cùng với đó là ứng dụng phi tập trung dựa trên nền tảng Hyperledger Fabric - một nền tảng mạng chuỗi khối riêng tư nổi tiếng nhất hiện nay. Thông qua giao diện trực quan của hệ thống, một lập trình viên dù cho không có kiến thức về mạng chuỗi khối cũng có thể dễ dàng triển khai hạ tầng mạng chuỗi khối riêng tư và các ứng dụng phi tập trung phục vụ cho nhiều yêu cầu nghiệp vụ khác nhau.
+
+\section{Mục tiêu và phạm vi đề tài}
+\label{section:1.2}
+Sinh viên trước tiên cần trình bày tổng quan các kết quả của các nghiên cứu hiện nay cho bài toán giới thiệu ở phần \ref{section:1.1} (đối với đề tài nghiên cứu), hoặc về các sản phẩm hiện tại/về nhu cầu của người dùng (đối với đề tài ứng dụng). Tiếp đến, sinh viên tiến hành so sánh và đánh giá tổng quan các sản phẩm/nghiên cứu này.
+
+Dựa trên các phân tích và đánh giá ở trên, sinh viên khái quát lại các hạn chế hiện tại đang gặp phải. Trên cơ sở đó, sinh viên sẽ hướng tới giải quyết vấn đề cụ thể gì, khắc phục hạn chế gì, phát triển phần mềm \textbf{có các chức năng chính gì}, tạo nên đột phá gì, v.v.
+
+Trong phần này, sinh viên lưu ý chỉ trình bày tổng quan, không đi vào chi tiết của vấn đề hoặc giải pháp. Nội dung chi tiết sẽ được trình bày trong các chương tiếp theo, đặc biệt là trong Chương 5.
+
+\section{Định hướng giải pháp}
+\label{section:1.3}
+
+Từ việc xác định rõ nhiệm vụ cần giải quyết ở phần \ref{section:1.2}, sinh viên đề xuất định hướng giải pháp của mình theo trình tự sau: (i) Sinh viên trước tiên trình bày sẽ giải quyết vấn đề theo định hướng, phương pháp, thuật toán, kỹ thuật, hay công nghệ nào; Tiếp theo, (ii) sinh viên mô tả ngắn gọn giải pháp của mình là gì (khi đi theo định hướng/phương pháp nêu trên); và sau cùng, (iii) sinh viên trình bày đóng góp chính của đồ án là gì, kết quả đạt được là gì.
+
+Sinh viên lưu ý không giải thích hoặc phân tích chi tiết công nghệ/thuật toán trong phần này. Sinh viên chỉ cần nêu tên định hướng công nghệ/thuật toán, mô tả ngắn gọn trong một đến hai câu và giải thích nhanh lý do lựa chọn.
+
+\section{Bố cục đồ án}
+\label{section:1.4}
+Phần còn lại của báo cáo đồ án tốt nghiệp này được tổ chức như sau. 
+
+Chương 2 trình bày về v.v. 
+
+Trong Chương 3, em/tôi giới thiệu về v.v.
+
+\textbf{Chú ý:} Sinh viên cần viết mô tả thành đoạn văn đầy đủ về nội dung chương. Tuyệt đối không viết ý hay gạch đầu dòng. Chương 1 không cần mô tả trong phần này. 
+
+Ví dụ tham khảo mô tả chương trong phần bố cục đồ án tốt nghiệp: Chương *** trình bày đóng góp chính của đồ án, đó là một nền tảng ABC cho phép khai phá và tích hợp nhiều nguồn dữ liệu, trong đó mỗi nguồn dữ liệu lại có định dạng đặc thù riêng. Nền tảng ABC được phát triển dựa trên khái niệm DEF, là các module ngữ nghĩa trợ giúp người dùng tìm kiếm, tích hợp và hiển thị trực quan dữ liệu theo mô hình cộng tác và mô hình phân tán.
+
+\textbf{Chú ý:} Trong phần nội dung chính, mỗi chương của đồ án nên có phần Tổng quan và Kết chương. Hai phần này đều có định dạng văn bản “Normal”, sinh viên không cần tạo định dạng riêng, ví dụ như không in đậm/in nghiêng, không đóng khung, v.v. 
+
+Trong phần Tổng quan của chương N, sinh viên nên có sự liên kết với chương N-1 rồi trình bày sơ qua lý do có mặt của chương N và sự cần thiết của chương này trong đồ án. Sau đó giới thiệu những vấn đề sẽ trình bày trong chương này là gì, trong các đề mục lớn nào.
+
+Ví dụ về phần Tổng quan: Chương 3 đã thảo luận về nguồn gốc ra đời, cơ sở lý thuyết và các nhiệm vụ chính của bài toán tích hợp dữ liệu. Chương 4 này sẽ trình bày chi tiết các công cụ tích hợp dữ liệu theo hướng tiếp cận “mashup”. Với mục đích và phạm vi của đề tài, sáu nhóm công cụ tích hợp dữ liệu chính được trình bày bao gồm: (i) nhóm công cụ ABC trong phần 4.1, (ii) nhóm công cụ DEF trong phần 4.2, nhóm công cụ GHK trong phần 4.3, v.v.
+
+Trong phần Kết chương, sinh viên đưa ra một số kết luận quan trọng của chương. Những vấn đề mở ra trong Tổng quan cần được tóm tắt lại nội dung và cách giải quyết/thực hiện như thế nào. Sinh viên lưu ý không viết Kết chương giống hệt Tổng quan. Sau khi đọc phần Kết chương, người đọc sẽ nắm được sơ bộ nội dung và giải pháp cho các vấn đề đã trình bày trong chương. Trong Kết chương, Sinh viên nên có thêm câu liên kết tới chương tiếp theo.
+
+Ví dụ về phần Kết chương: Chương này đã phân tích chi tiết sáu nhóm công cụ tích hợp dữ liệu. Nhóm công cụ ABC và DEF thích hợp với những bài toán tích hợp dữ liệu phạm vi nhỏ. Trong khi đó, nhóm công cụ GHK lại chứng tỏ thế mạnh của mình với những bài toán cần độ chính xác cao, v.v. Từ kết quả nghiên cứu và phân tích về sáu nhóm công cụ tích hợp dữ liệu này, tôi đã thực hiện phát triển phần mềm tự động bóc tách và tích hợp dữ liệu sử dụng nhóm công cụ GHK. Phần này được trình bày trong chương tiếp theo – Chương 5.
+
+\end{document}
