@@ -21,43 +21,61 @@ Mạng Bitcoin và Ethereum nêu ở trên là mạng chuối khối công khai 
 	\item Tốc độ xử lý giao dịch cao hơn so với mạng chuỗi khối công khai.
 \end{itemize}
 
-Với những ưu điểm mà mạng chuỗi khối riêng tư mang lại, việc các doanh nghiệp ứng dụng mạng riêng tư vào nghiệp vụ hoàn toàn có thể giúp nâng cao hiệu suất công việc. Tuy vậy, việc triển khai, quản lý hệ thống mạng này yêu cầu cơ sở hạ tầng và kiến thức chuyên môn đặc thù. Thêm vào đó, việc viết và triển khai một ứng dụng phi tập trung phục vụ cho nghiệp vụ cũng là một thử thách lớn, đặc biệt là với những ai chưa từng tiếp xúc với mạng chuỗi khối, một công nghệ mới và có phần phức tạp. Nhận thấy vấn đề trên, tôi đã quyết định phát triển một hệ thống tự động triển khai mạng cùng với đó là ứng dụng phi tập trung dựa trên nền tảng Hyperledger Fabric - một nền tảng mạng chuỗi khối riêng tư nổi tiếng nhất hiện nay. Thông qua giao diện trực quan của hệ thống, một lập trình viên dù cho không có kiến thức về mạng chuỗi khối cũng có thể dễ dàng triển khai hạ tầng mạng chuỗi khối riêng tư và các ứng dụng phi tập trung phục vụ cho nhiều yêu cầu nghiệp vụ khác nhau.
+Với những ưu điểm mà mạng chuỗi khối riêng tư mang lại, việc các doanh nghiệp ứng dụng mạng riêng tư vào nghiệp vụ chắc chắn có thể giúp nâng cao hiệu suất công việc. Tuy vậy, việc triển khai, quản lý hệ thống mạng này yêu cầu cơ sở hạ tầng và kiến thức chuyên môn đặc thù. Thêm vào đó, việc viết và triển khai một ứng dụng phi tập trung phục vụ cho nghiệp vụ cũng là một thử thách lớn, đặc biệt là với những ai chưa từng tiếp xúc với mạng chuỗi khối, một công nghệ mới và có phần phức tạp. 
+
+Nhận thấy vấn đề trên, tôi đã quyết định phát triển một hệ thống tự động triển khai mạng cùng với đó là ứng dụng phi tập trung dựa trên nền tảng Hyperledger Fabric - một nền tảng mạng chuỗi khối riêng tư nổi tiếng nhất hiện nay. Thông qua giao diện trực quan của hệ thống, một lập trình viên dù cho không có kiến thức về mạng chuỗi khối cũng có thể dễ dàng triển khai hạ tầng mạng chuỗi khối riêng tư và các ứng dụng phi tập trung phục vụ cho nhiều yêu cầu nghiệp vụ khác nhau.
 
 \section{Mục tiêu và phạm vi đề tài}
 \label{section:1.2}
-Sinh viên trước tiên cần trình bày tổng quan các kết quả của các nghiên cứu hiện nay cho bài toán giới thiệu ở phần \ref{section:1.1} (đối với đề tài nghiên cứu), hoặc về các sản phẩm hiện tại/về nhu cầu của người dùng (đối với đề tài ứng dụng). Tiếp đến, sinh viên tiến hành so sánh và đánh giá tổng quan các sản phẩm/nghiên cứu này.
 
-Dựa trên các phân tích và đánh giá ở trên, sinh viên khái quát lại các hạn chế hiện tại đang gặp phải. Trên cơ sở đó, sinh viên sẽ hướng tới giải quyết vấn đề cụ thể gì, khắc phục hạn chế gì, phát triển phần mềm \textbf{có các chức năng chính gì}, tạo nên đột phá gì, v.v.
+\subsection{Giải pháp liên quan}
+Ông lớn Amazon cung cấp một giải pháp để hỗ trợ quá trình triển khai mạng Hyperledger Fabric - Amazon Managed Blockchain. Với thế mạnh về điện toán đám mây của mình, thông qua dịch vụ Managed Blockchain, người dùng có thể triển khai một mạng Hyperledger Fabric cho riêng mình trên cơ sở hạ tầng của Amazon chỉ với vài cái nhấp chuột. Quá trình quản lý và theo dõi hoạt động của mạng cũng được đơn giản hóa, tối ưu trải nhiệm người dùng. 
 
-Trong phần này, sinh viên lưu ý chỉ trình bày tổng quan, không đi vào chi tiết của vấn đề hoặc giải pháp. Nội dung chi tiết sẽ được trình bày trong các chương tiếp theo, đặc biệt là trong Chương 5.
+Tuy quy trình khởi tạo và quản trị mạng có thể được thực hiện thông qua giao diện trực quan, việc phát triển ứng dụng phi tập trung phục vụ cho các nghiệp vụ trên mạng này lại không được như vậy. Người dùng phải tự mình lập trình vào phải tự chạy các câu lệnh trên terminal để triển khai ứng dụng đó lên mạng. Do vậy quá trình phát triển ứng dụng phi tập trung vẫn sẽ yêu cầu kiến thức chuyên sâu về Hyperledger Fabric. Lập trình viên sẽ cần phải học để viết và triển khai hợp đồng thông minh, một quá trình tiêu tốn nhiều thời gian lẫn công sức.
+
+\subsection{Mục tiêu và phạm vi}
+
+Với mục tiêu đơn giản hóa nhất có thể quá trình ứng dụng mạng chuỗi khối riêng tư vào các nghiệp vụ doanh nghiệp, hệ thống trong đồ án này hướng đến việc cho phép những lập trình viên dù cho không có kiến thức về mạng chuỗi khối cũng có thể dễ dàng triển khai mạng cùng với đó là ứng dụng phi tập trung dựa trên nền tảng Hyperledger Fabric. Để đạt được điều này, 2 mục tiêu sau được đề ra:
+\begin{itemize}
+	\item Cho phép cấu hình và triển khai một mạng Hyperledger Fabric thông qua giao diện trực quan.
+	\item Cho phép thiết kế và triển khai ứng dụng phi tập trung thông qua giao diện trực quan. Cung cấp phương thức để có thể tương tác với hợp đồng thông minh đó mà không yêu cầu kiến thức đặc thù.
+\end{itemize}
 
 \section{Định hướng giải pháp}
 \label{section:1.3}
 
-Từ việc xác định rõ nhiệm vụ cần giải quyết ở phần \ref{section:1.2}, sinh viên đề xuất định hướng giải pháp của mình theo trình tự sau: (i) Sinh viên trước tiên trình bày sẽ giải quyết vấn đề theo định hướng, phương pháp, thuật toán, kỹ thuật, hay công nghệ nào; Tiếp theo, (ii) sinh viên mô tả ngắn gọn giải pháp của mình là gì (khi đi theo định hướng/phương pháp nêu trên); và sau cùng, (iii) sinh viên trình bày đóng góp chính của đồ án là gì, kết quả đạt được là gì.
-
-Sinh viên lưu ý không giải thích hoặc phân tích chi tiết công nghệ/thuật toán trong phần này. Sinh viên chỉ cần nêu tên định hướng công nghệ/thuật toán, mô tả ngắn gọn trong một đến hai câu và giải thích nhanh lý do lựa chọn.
+\subsection{Triển khai mạng}
+Cơ sở hạ tầng để triển khai mạng cần được suy tính kỹ lượng để đảm bảo mạng hoạt động ổn định và hiệu quả nhất. Để đơn giản hóa quá trình triển khai và quản lý mạng Hyperledger Fabric, người dùng sẽ được phép tùy chỉnh cấu hình thông qua một giao diện. Sau đó, hệ thống sẽ triển khai một mạng với cấu hình tương ứng lên điện toán đám mây. Ngươi dùng sẽ không cần chú ý quá nhiều đến chi tiết phần cứng mà chỉ cần quan tâm đến cấu hình của cơ sở hạ tâng. 
+\subsection{Triển khai ứng dụng phi tập trung}
+Điều quan trọng nhất trong việc triển khai ứng dụng là thiết kế kiến trúc sao cho phù hợp với nghiệp vụ. Để bao quát được nhiều nghiệp vụ nhất có thể, hệ thống sẽ cho phép người dùng triển khai ứng dụng dựa trên mô hình cơ sở dữ liệu quan hệ. Nhiều thực thể sở hữu các thuộc tính khác nhau có thể được định nghĩa. Các thực thể này có thể có nhiều liên kết với nhau (quan hệ một-một, một-nhiều, nhiều-nhiều). Dựa vào kiến trúc tổng quan của các thực thể này, một ứng dụng phi tập trung tương ứng sẽ được tự động sinh ra. Sau khi được triển khai, người dùng có thể tải bộ SDK về để tương tác với mạng chuỗi khối thông qua các hàm đọc ghi sửa xóa các thực thể trên. Quá trình hình thành và thay đổi của các thực thể này sẽ được lưu lại vĩnh viễn, đảm bảo việc xác thực và truy vấn dữ liệu nghiệp vụ thông qua mạng chuỗi khối.
 
 \section{Bố cục đồ án}
 \label{section:1.4}
-Phần còn lại của báo cáo đồ án tốt nghiệp này được tổ chức như sau. 
+Phần còn lại của báo cáo đồ án tốt nghiệp này được tổ chức như sau:
 
-Chương 2 trình bày về v.v. 
+\begin{itemize}
+	\item Chương 2: Giới thiệu kiến trúc mạng chuỗi khối Hyperledger Fabric.
+	\item Chương 3: Khảo sát phần tích yêu cầu.
+	\item Chương 4: Trình bày về các công nghệ sử dụng.
+	\item Chương 5: Kết luận và định hướng phát triển trong tương lai.
+\end{itemize}
 
-Trong Chương 3, em/tôi giới thiệu về v.v.
+% Chương 2 trình bày về kiến trúc mạng chuỗi khối Hyperledger Fabric.
 
-\textbf{Chú ý:} Sinh viên cần viết mô tả thành đoạn văn đầy đủ về nội dung chương. Tuyệt đối không viết ý hay gạch đầu dòng. Chương 1 không cần mô tả trong phần này. 
+% Trong Chương 3, em/tôi giới thiệu về v.v.
 
-Ví dụ tham khảo mô tả chương trong phần bố cục đồ án tốt nghiệp: Chương *** trình bày đóng góp chính của đồ án, đó là một nền tảng ABC cho phép khai phá và tích hợp nhiều nguồn dữ liệu, trong đó mỗi nguồn dữ liệu lại có định dạng đặc thù riêng. Nền tảng ABC được phát triển dựa trên khái niệm DEF, là các module ngữ nghĩa trợ giúp người dùng tìm kiếm, tích hợp và hiển thị trực quan dữ liệu theo mô hình cộng tác và mô hình phân tán.
+% \textbf{Chú ý:} Sinh viên cần viết mô tả thành đoạn văn đầy đủ về nội dung chương. Tuyệt đối không viết ý hay gạch đầu dòng. Chương 1 không cần mô tả trong phần này. 
 
-\textbf{Chú ý:} Trong phần nội dung chính, mỗi chương của đồ án nên có phần Tổng quan và Kết chương. Hai phần này đều có định dạng văn bản “Normal”, sinh viên không cần tạo định dạng riêng, ví dụ như không in đậm/in nghiêng, không đóng khung, v.v. 
+% Ví dụ tham khảo mô tả chương trong phần bố cục đồ án tốt nghiệp: Chương *** trình bày đóng góp chính của đồ án, đó là một nền tảng ABC cho phép khai phá và tích hợp nhiều nguồn dữ liệu, trong đó mỗi nguồn dữ liệu lại có định dạng đặc thù riêng. Nền tảng ABC được phát triển dựa trên khái niệm DEF, là các module ngữ nghĩa trợ giúp người dùng tìm kiếm, tích hợp và hiển thị trực quan dữ liệu theo mô hình cộng tác và mô hình phân tán.
 
-Trong phần Tổng quan của chương N, sinh viên nên có sự liên kết với chương N-1 rồi trình bày sơ qua lý do có mặt của chương N và sự cần thiết của chương này trong đồ án. Sau đó giới thiệu những vấn đề sẽ trình bày trong chương này là gì, trong các đề mục lớn nào.
+% \textbf{Chú ý:} Trong phần nội dung chính, mỗi chương của đồ án nên có phần Tổng quan và Kết chương. Hai phần này đều có định dạng văn bản “Normal”, sinh viên không cần tạo định dạng riêng, ví dụ như không in đậm/in nghiêng, không đóng khung, v.v. 
 
-Ví dụ về phần Tổng quan: Chương 3 đã thảo luận về nguồn gốc ra đời, cơ sở lý thuyết và các nhiệm vụ chính của bài toán tích hợp dữ liệu. Chương 4 này sẽ trình bày chi tiết các công cụ tích hợp dữ liệu theo hướng tiếp cận “mashup”. Với mục đích và phạm vi của đề tài, sáu nhóm công cụ tích hợp dữ liệu chính được trình bày bao gồm: (i) nhóm công cụ ABC trong phần 4.1, (ii) nhóm công cụ DEF trong phần 4.2, nhóm công cụ GHK trong phần 4.3, v.v.
+% Trong phần Tổng quan của chương N, sinh viên nên có sự liên kết với chương N-1 rồi trình bày sơ qua lý do có mặt của chương N và sự cần thiết của chương này trong đồ án. Sau đó giới thiệu những vấn đề sẽ trình bày trong chương này là gì, trong các đề mục lớn nào.
 
-Trong phần Kết chương, sinh viên đưa ra một số kết luận quan trọng của chương. Những vấn đề mở ra trong Tổng quan cần được tóm tắt lại nội dung và cách giải quyết/thực hiện như thế nào. Sinh viên lưu ý không viết Kết chương giống hệt Tổng quan. Sau khi đọc phần Kết chương, người đọc sẽ nắm được sơ bộ nội dung và giải pháp cho các vấn đề đã trình bày trong chương. Trong Kết chương, Sinh viên nên có thêm câu liên kết tới chương tiếp theo.
+% Ví dụ về phần Tổng quan: Chương 3 đã thảo luận về nguồn gốc ra đời, cơ sở lý thuyết và các nhiệm vụ chính của bài toán tích hợp dữ liệu. Chương 4 này sẽ trình bày chi tiết các công cụ tích hợp dữ liệu theo hướng tiếp cận “mashup”. Với mục đích và phạm vi của đề tài, sáu nhóm công cụ tích hợp dữ liệu chính được trình bày bao gồm: (i) nhóm công cụ ABC trong phần 4.1, (ii) nhóm công cụ DEF trong phần 4.2, nhóm công cụ GHK trong phần 4.3, v.v.
 
-Ví dụ về phần Kết chương: Chương này đã phân tích chi tiết sáu nhóm công cụ tích hợp dữ liệu. Nhóm công cụ ABC và DEF thích hợp với những bài toán tích hợp dữ liệu phạm vi nhỏ. Trong khi đó, nhóm công cụ GHK lại chứng tỏ thế mạnh của mình với những bài toán cần độ chính xác cao, v.v. Từ kết quả nghiên cứu và phân tích về sáu nhóm công cụ tích hợp dữ liệu này, tôi đã thực hiện phát triển phần mềm tự động bóc tách và tích hợp dữ liệu sử dụng nhóm công cụ GHK. Phần này được trình bày trong chương tiếp theo – Chương 5.
+% Trong phần Kết chương, sinh viên đưa ra một số kết luận quan trọng của chương. Những vấn đề mở ra trong Tổng quan cần được tóm tắt lại nội dung và cách giải quyết/thực hiện như thế nào. Sinh viên lưu ý không viết Kết chương giống hệt Tổng quan. Sau khi đọc phần Kết chương, người đọc sẽ nắm được sơ bộ nội dung và giải pháp cho các vấn đề đã trình bày trong chương. Trong Kết chương, Sinh viên nên có thêm câu liên kết tới chương tiếp theo.
+
+% Ví dụ về phần Kết chương: Chương này đã phân tích chi tiết sáu nhóm công cụ tích hợp dữ liệu. Nhóm công cụ ABC và DEF thích hợp với những bài toán tích hợp dữ liệu phạm vi nhỏ. Trong khi đó, nhóm công cụ GHK lại chứng tỏ thế mạnh của mình với những bài toán cần độ chính xác cao, v.v. Từ kết quả nghiên cứu và phân tích về sáu nhóm công cụ tích hợp dữ liệu này, tôi đã thực hiện phát triển phần mềm tự động bóc tách và tích hợp dữ liệu sử dụng nhóm công cụ GHK. Phần này được trình bày trong chương tiếp theo – Chương 5.
 
 \end{document}
