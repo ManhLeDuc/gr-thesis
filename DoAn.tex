@@ -236,19 +236,24 @@
 \listoftables}
 % \phantomsection\addcontentsline{toc}{section}{\numberline {} DANH MỤC BẢNG BIỂU}
 
-\glsaddall 
+% \glsaddall 
 % \renewcommand*{\glossaryname}{Danh sách thuật ngữ}
-\renewcommand*{\acronymname}{DANH MỤC THUẬT NGỮ VÀ TỪ VIẾT TẮT}
-\renewcommand*{\entryname}{Thuật ngữ}
-\renewcommand*{\descriptionname}{Ý nghĩa}
-\printnoidxglossaries
+% \renewcommand{\acronymname}{DANH MỤC THUẬT NGỮ VÀ TỪ VIẾT TẮT}
+% \renewcommand*{\entryname}{Thuật ngữ}
+% \renewcommand*{\descriptionname}{Ý nghĩa}
+% \printnoidxglossaries
 % \phantomsection\addcontentsline{toc}{section}{\numberline {} DANH MỤC THUẬT NGỮ VÀ TỪ VIẾT TẮT}
 
-% \newpage
-% \subfile{chapters/0_5_Danh_muc_viet_tat.tex}
+\newpage
+% \title{DANH MỤC THUẬT NGỮ VÀ TỪ VIẾT TẮT}
+% \renewcommand\bibname{TỪ VIẾT TẮT}
+% \phantomsection\addcontentsline{toc}{chapter}{TỪ VIẾT TẮT}
+\subfile{Chuong/0_5_Danh_muc_viet_tat.tex}
 
-% \newpage
-% \subfile{chapters/0_6_Thuat_ngu.tex}
+\newpage
+% \renewcommand\bibname{THUẬT NGỮ}
+% \phantomsection\addcontentsline{toc}{chapter}{THUẬT NGỮ}
+\subfile{Chuong/0_6_Thuat_ngu.tex}
 % ===================================================
 
 
@@ -268,7 +273,7 @@
 \newpage
 %\pagestyle{fancy} % Áp dụng header và footer
 \chapter{HYPERLEDGER FABRIC}
-\label{chapter:Related_works}
+\label{chapter:Fabric}
 \subfile{Chuong/2_Fabric}
 
 \newpage
@@ -285,7 +290,7 @@
 
 \newpage
 %\pagestyle{fancy} % Áp dụng header và footer
-\chapter{THỰC NGHIỆM VÀ ĐÁNG GIÁ}
+\chapter{THỰC NGHIỆM VÀ ĐÁNH GIÁ}
 \label{chapter:Experiment}
 \subfile{Chuong/5_Ket_qua_thuc_nghiem}
 
@@ -293,18 +298,19 @@
 % %\pagestyle{fancy} % Áp dụng header và footer
 % \chapter{CÁC GIẢI PHÁP VÀ ĐÓNG GÓP NỔI BẬT}
 % \label{chapter:SolutionAndContribution}
-% \subfile{Chuong/5_Giai_phap_dong_gop}
+% \subfile{Chuong/6_Giai_phap_dong_gop}
+
 \newpage
 %\pagestyle{fancy} % Áp dụng header và footer
 \chapter{KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN} %Kết luận và hướng phát triển}
 \label{chapter:conclusion}
-\subfile{Chuong/6_Ket_luan}
+\subfile{Chuong/7_Ket_luan}
 
-\newpage
-%\pagestyle{fancy} % Áp dụng header và footer
-\chapter*{MỘT SỐ LƯU Ý VỀ TÀI LIỆU THAM KHẢO} %Kết luận và hướng phát triển}
-\label{chapter:reference}
-\subfile{Chuong/7_Luu_y_tai_lieu_tham_khao}
+% \newpage
+% %\pagestyle{fancy} % Áp dụng header và footer
+% \chapter*{MỘT SỐ LƯU Ý VỀ TÀI LIỆU THAM KHẢO} %Kết luận và hướng phát triển}
+% \label{chapter:reference}
+% \subfile{Chuong/7_Luu_y_tai_lieu_tham_khao}
 
 
 % ===================================================
@@ -313,25 +319,25 @@
 \printbibliography
 \phantomsection\addcontentsline{toc}{chapter}{TÀI LIỆU THAM KHẢO}
 
-\appendixpage
-\appendices
-\addappheadtotoc
+% \appendixpage
+% \appendices
+% \addappheadtotoc
 
 % \chapter*{PHỤ LỤC} %Kết luận và hướng phát triển}
 
 %\mainmatter
-\titleformat{\chapter}[hang]{\centering\bfseries}{ \thechapter.\ }{0pt}{}[]
-\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
+% \titleformat{\chapter}[hang]{\centering\bfseries}{ \thechapter.\ }{0pt}{}[]
+% \titlespacing*{\chapter}{0pt}{-20pt}{20pt}
 
-\titlecontents{chapter}
-    [0.0cm]             % left margin
-    {\bfseries\vspace{0.3cm}}                  % above code
-    {{\bfseries{\scshape} \thecontentslabel.\ }} % numbered format
-    {}         % unnumbered format
-    {\titlerule*[0.3pc]{.}\contentspage}         % filler-page-format, e.g dots
-\chapter{HƯỚNG DẪN VIẾT ĐỒ ÁN TỐT NGHIỆP}
-\subfile{Chuong/Phu_luc_A}
-\newpage
-\chapter{ĐẶC TẢ USE CASE}
-\subfile{Chuong/Phu_luc_B}
+% \titlecontents{chapter}
+%     [0.0cm]             % left margin
+%     {\bfseries\vspace{0.3cm}}                  % above code
+%     {{\bfseries{\scshape} \thecontentslabel.\ }} % numbered format
+%     {}         % unnumbered format
+%     {\titlerule*[0.3pc]{.}\contentspage}         % filler-page-format, e.g dots
+% \chapter{HƯỚNG DẪN VIẾT ĐỒ ÁN TỐT NGHIỆP}
+% \subfile{Chuong/Phu_luc_A}
+% \newpage
+% \chapter{ĐẶC TẢ USE CASE}
+% \subfile{Chuong/Phu_luc_B}
 \end{document}

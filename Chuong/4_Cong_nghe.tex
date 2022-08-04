@@ -1,17 +1,97 @@
 \documentclass[../DoAn.tex]{subfiles}
 \begin{document}
 
-Chương này có độ dài không quá 10 trang. Nếu cần trình bày dài hơn, sinh viên đưa vào phần phụ lục. Chú ý đây là kiến thức đã có sẵn; SV sau khi tìm hiểu được thì phân tích và tóm tắt lại. Sinh viên không trình bày dài dòng, chi tiết. 
+Chương 3 đã phần tích yêu cầu hệ thống. Chương 4 này sẽ trình bày về các công
+nghệ được sử dụng để phát triển hệ thống triển khai mạng và ứng dụng
+phi tập trung dựa trên nền tảng Hyperledger Fabric.
 
-Với đồ án ứng dụng, sinh viên để tên chương là “Công nghệ sử dụng”. Trong chương này, sinh viên giới thiệu về các công nghệ, nền tảng sử dụng trong đồ án. Sinh viên cũng có thể trình bày thêm nền tảng lý thuyết nào đó nếu cần dùng tới.
+\section{Công nghệ triển khai mạng và ứng dụng}
 
-Với đồ án nghiên cứu, sinh viên đổi tên chương thành “Cơ sở lý thuyết”. Khi đó, nội dung cần trình bày bao gồm: Kiến thức nền tảng, cơ sở lý thuyết, các thuật toán, phương pháp nghiên cứu, v.v.
+Để có thể được ứng dụng vào trong các hoạt động doanh nghiệp, mạng chuỗi khối riêng tư sẽ phải hoạt động liên tục và ổn định nhất có thể. Các công nghệ sau được sử dụng để đảm bảo quá trình triển khai, quản lý mạng cũng như ứng dụng phi tập trung hoạt động trơn tru nhất có thể.
 
-Với từng công nghệ/nền tảng/lý thuyết được trình bày, sinh viên phải phân tích rõ công nghệ/nền tảng/lý thuyết đó dùng để để giải quyết vấn đề/yêu cầu cụ thể nào ở Chương 2. Hơn nữa, với từng vấn đề/yêu cầu, sinh viên phải liệt kê danh sách các công nghệ/hướng tiếp cận tương tự có thể dùng làm lựa chọn thay thế, rồi giải thích rõ sự lựa chọn của mình.
+\subsection{Container}
+Container là một môi trường ảo trong đó có một ứng dụng, tiến trình hoạt động.
+Container gần giống như máy áo khi cho phép đóng gói tiến trình, ứng dụng đó.
+Việc đóng gói cho phép container có thể được vận chuyển từ máy tính này sang
+máy tính khác mà vẫn đảm bảo tiến trình, ứng dụng bên trong container sẽ hoạt
+động bình thường bất kể môi trường máy chủ khác nhau. Điều này có nghĩa là miễn
+là các máy có thể chạy container, ứng dụng được đóng gói trong container sẽ
+chạy ổn định trên các máy đó. Điểm khác biệt giữa container và máy ảo là
+container không ảo hóa toàn bộ tài nguyên máy tính. Do đó, chi phí để chạy một
+container là thấp hơn rất nhiều so với máy ảo, cho phép một máy chủ dễ dàng
+chạy nhiều container một lúc.
 
-Lưu ý: Nội dung ĐATN phải có tính chất liên kết, liền mạch, và nhất quán. Vì vậy, các công nghệ/thuật toán trình bày trong chương này phải khớp với nội dung giới thiệu của sinh viên ở phần trước đó. 
+Các thành phần như Orderer node, Peer node, Nhà cung cấp chứng chỉ số hay Hợp
+đồng thông minh của mạng Hyperledger Fabric khi được hệ thống triển khai đều sẽ
+nằm trong container, giúp việc khởi chạy các thành phần này dễ dàng hơn.
 
-Trong chương này, để tăng tính khoa học và độ tin cậy, sinh viên nên chỉ rõ nguồn kiến thức mình thu thập được ở tài liệu nào, đồng thời đưa tài liệu đó vào trong danh sách tài liệu tham khảo rồi tạo các tham chiếu chéo (xem hướng dẫn ở phụ lục A.7).
+\subsection{Kubernetes}
+Số lượng thành phần trong kiến trúc mạng Hyperledger Fabric là không nhỏ. Việc
+quản lý và kết nối các thành phần này cũng là một thử thách. Đó là lý do
+Kubernetes\cite{kubernetes} được lựa chọn. Kubernetes là một nền tảng mã nguồn mở hỗ trợ triển
+khai và quản lý nhiều container một cách tối ưu. Cơ sở hạ tầng triển khai sử
+dụng Kubernetes sẽ có khả năng:
 
+\begin{itemize}
+  \item \textbf{Tự động điều phối:} Container sẽ được tự động triển khai một cách hợp lý đến một trong các máy chủ trong hệ thống.
+  \item \textbf{Tự khởi động lại:} Các container khi gặp lỗi dừng hoạt động sẽ được tự động phát hiện và tái khởi động lại.
+  \item \textbf{Dễ dàng mở rộng:} Có thể dễ dàng triển khai nhiều container giống nhau và cân bằng tải tới các container cùng loại đó.
+  \item \textbf{Cập nhật không thời gian chết:} Việc thực hiện cập nhật các container đang chạy sẽ không gây gián đoạn đến hệ thống.
+\end{itemize}
+
+Đồ án này sẽ sử dụng Kubernetes làm cơ sở để triển khai mạng Hyperledger Fabric nhằm nâng cao khả năng chịu lỗi và tối ưu hiệu suất của hệ thống.
+
+\subsection{Dịch vụ điến toán đám mây}
+Hệ thống trong đồ án lựa chọn máy chủ ảo cung cấp bởi các dịch vụ điện toán đám
+mây để trở thành hệ thống máy tính chạy mạng chuỗi khối Hyperledger Fabric. Nhà
+cung cấp dịch vụ điện toán đám mây sẽ là người quản lý các máy chủ vật lý, loại
+bỏ gánh nặng này khỏi vai người dùng. Thêm vào đó, với quy mô hoạt động linh
+hoạt, chi phí để duy trì hoạt động của máy ảo sẽ tương ứng với tài nguyên được
+thực sự sử dụng, không lo việc lãng phí tài nguyên thừa.
+
+\section{Công nghệ xây dựng hệ thống}
+
+Ngôn ngữ lập trình Python được sử dụng để xây dựng hệ thống, cùng với đó các
+công nghệ dưới đây.
+
+\subsection{MongoDB}
+
+MongoDB\cite{mongodb} là một cơ sở dữ liệu NoSQL phổ biến nhất. Cơ sở dữ liệu NoSQL trái
+ngược với các mô hình dữ liệu quan hệ SQL ở chỗ dữ liệu không được lưu thành
+bảng, cột mà sẽ được lưu tập hợp (collection) của các bản ghi (record). Điều
+này cho phép dữ liệu có thể được lưu trữ với cấu trúc linh hoạt. Tốc độ truy
+cập cao cùng hiệu năng vượt trội là lý do MongoDB được sử dụng trong hệ thống.
+
+\subsection{RabbitMQ}
+
+RabbitMQ\cite{rabbitmq} là một message broker sử dụng giao thức AMQP (Advanced Message Queuing
+Protocol) hay còn gọi là phần mềm quản lý hàng đợi yêu cầu (message). Trong
+kiến trúc Mỉcroservices, một thử thách lớn nhất là việc quản lý giao tiếp giữa
+các dịch vụ (service). RabbitMQ là công cụ được sử dụng để giải quyết vấn đề
+này qua các cơ chế diều phối, xử lý việc trao đổi yêu cầu giữa nhiều bên cùng
+với đó đảm bảo yêu cầu được gửi sẽ đến đích một cách toàn vẹn.
+
+\subsection{Celery}
+
+Celery\cite{celery} là một hệ thống quản lý hàng đợi công việc (task) thời gian thực. Các
+tác vụ như tạo mạng trong hệ thống yêu cầu thời gian xử lý dài. Để đảm bảo hiệu
+năng, các tác vụ nặng này sẽ được phân chia cho nhiều máy thực hiện. Celery
+được sử dụng để hỗ trợ quá trình phân chia công việc này giúp bảo hệ thống có
+thể mở rộng dễ dàng hơn. Celery sử dụng một message broker (RabbitMQ) để hoạt
+động.
+
+Chương 4 đã trình bày về các công nghệ được sử dụng trong hệ thống. Chương tiếp
+theo sẽ trình bày về chi tiết cấu trúc và các luồng hoạt động của hệ thống.
+% Chương này có độ dài không quá 10 trang. Nếu cần trình bày dài hơn, sinh viên đưa vào phần phụ lục. Chú ý đây là kiến thức đã có sẵn; SV sau khi tìm hiểu được thì phân tích và tóm tắt lại. Sinh viên không trình bày dài dòng, chi tiết. 
+
+% Với đồ án ứng dụng, sinh viên để tên chương là “Công nghệ sử dụng”. Trong chương này, sinh viên giới thiệu về các công nghệ, nền tảng sử dụng trong đồ án. Sinh viên cũng có thể trình bày thêm nền tảng lý thuyết nào đó nếu cần dùng tới.
+
+% Với đồ án nghiên cứu, sinh viên đổi tên chương thành “Cơ sở lý thuyết”. Khi đó, nội dung cần trình bày bao gồm: Kiến thức nền tảng, cơ sở lý thuyết, các thuật toán, phương pháp nghiên cứu, v.v.
+
+% Với từng công nghệ/nền tảng/lý thuyết được trình bày, sinh viên phải phân tích rõ công nghệ/nền tảng/lý thuyết đó dùng để để giải quyết vấn đề/yêu cầu cụ thể nào ở Chương 2. Hơn nữa, với từng vấn đề/yêu cầu, sinh viên phải liệt kê danh sách các công nghệ/hướng tiếp cận tương tự có thể dùng làm lựa chọn thay thế, rồi giải thích rõ sự lựa chọn của mình.
+
+% Lưu ý: Nội dung ĐATN phải có tính chất liên kết, liền mạch, và nhất quán. Vì vậy, các công nghệ/thuật toán trình bày trong chương này phải khớp với nội dung giới thiệu của sinh viên ở phần trước đó. 
+
+% Trong chương này, để tăng tính khoa học và độ tin cậy, sinh viên nên chỉ rõ nguồn kiến thức mình thu thập được ở tài liệu nào, đồng thời đưa tài liệu đó vào trong danh sách tài liệu tham khảo rồi tạo các tham chiếu chéo (xem hướng dẫn ở phụ lục A.7).
 
 \end{document}

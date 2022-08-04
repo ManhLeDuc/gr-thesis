@@ -1,0 +1,13 @@
+\documentclass[../DoAn.tex]{subfiles}
+\begin{document}
+\section{Kết luận}
+
+Sau quá trình thực hiện đồ án, tôi đã phát triển được hệ thống triển khai mạng và ứng dụng phi tập trung dựa trên nền tảng Hyperledger Fabric với khả năng đơn giản hóa quá trình ứng dụng công nghệ chuỗi khối nói chung và mạng chuỗi khối riêng tư nói riêng vào các nghiệp vụ thực tế. Để đạt được mục tiêu này, tôi đã tìm hiểu về chi tiết kiến trúc mạng, cùng với đó là cách để triển khai, vận hành hạ tầng mạng trên nền tảng Kubernetes và điện toán đám mây. Để được ứng dụng vào các nghiệp vụ cụ thể, tôi cũng đã đơn giản và trực quan hóa quá trình phát triển ứng dụng phi tập trung thông qua mô hình cơ sở dữ liệu quan hệ.
+
+Hệ thống trong đồ án này đã được tích hợp trong nền tảng V-chain\cite{vchain}. V-chain là dự án được tài trợ bởi Vingroup Innovation Fund với các dịch vụ tương tác với nhiều loại mạng chuỗi khối khác nhau từ riêng tư tới công khai. Hệ thống trong đồ án được sử dụng trong V-chain cũng với mục đích tạo và triển khai mạng và ứng dụng phi tập trung dựa trên nền tảng Hyperledger Fabric.
+
+\section{Hướng phát triển}
+
+Hiện nay, khi tạo một mạng mới, hệ thống mới chỉ cho phép khởi tạo mới các tổ chức. Trong tương lai, tôi muốn phát triển để các tổ chức sau khi được tạo có thể tham gia vào cả các mạng chuỗi khối khác. Thêm vào đó, một tính năng nổi bật khác của mạng Hyperledger Fabric chưa được tận dụng trong đồ án này đó là khả năng tách biệt giao dịch giữa các nhóm nhiều tổ chức ngay cả trong cùng một kênh.
+
+Về cấu trúc của ứng dụng phi tập trung, ngoài mô hình cơ sở dữ liệu quan hệ, tôi muốn phát triển nhiều kiểu ứng dụng phi tập trung khác. Nổi bật nhất có thể kể đến các ứng dụng liên quan đến trao đổi và mua bán tài sản số. Ngôn ngữ của SDK hiện tại cũng chỉ giới hạn ở Javascript, trong tương lai tôi muốn thêm SDK hỗ trợ các ngôn ngữ lập trình phổ biến khác như Python, Golang.
