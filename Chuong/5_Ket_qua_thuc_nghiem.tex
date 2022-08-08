@@ -2,9 +2,9 @@
 \begin{document}
 
 Các chương trước đã trình bày về yêu cầu và các công nghệ được sử dụng để hệ
-thống triển khai mạng và ứng dụng phi tập trung dựa trên nền tảng
-Hyperledger Fabric hoạt động. Chương 5 này sẽ trình bày từ tổng quan đến chi
-tiết thiết kế hệ thống, cùng với đó là kết quả thu được và kiểm thử.
+thống triển khai mạng và ứng dụng phi tập trung dựa trên nền tảng Hyperledger
+Fabric hoạt động. Chương 5 này sẽ trình bày từ tổng quan đến chi tiết thiết kế
+hệ thống, cùng với đó là kết quả thu được và kiểm thử.
 
 \section{Thiết kế tổng quan}
 
@@ -146,17 +146,17 @@ tương tác với bảng "Overview".
 Hình \ref{fig:classAccountService} mô tả biểu đồ lớp của Account service. Chi
 tiết các lớp được mô tả ở Bảng \ref{tab:classAccountService}
 
-\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|}
+\begin{longtable}{|p{0.175\textwidth}|p{0.175\textwidth}|p{0.2625\textwidth}|p{0.2625\textwidth}|}
     \caption{Mô tả chi tiết các lớp của Account service}
-    \label{tab:classAccountService}                                                                                                                                                                                           \\
+    \label{tab:classAccountService}                                                                                                                                                                                                \\
     \hline
-    Tên lớp                                     & Mô tả lớp                                                       & Tên thuộc tính/phương thức & Mô tả thuộc tính/phương thức                                                 \\ \hline
-    \multirow[t]{2}{0.2\textwidth}{UserHandler} & \multirow[t]{2}{0.2\textwidth}{Xử lý các yêu cầu thông qua API} & create\_user(user\_info)   & Tạo một user mới với thông tin tương ứng với user\_info                      \\ \hline
-                                                &                                                                 & login(username, password)  & Đăng nhập người dùng vào hệ thống. Trả về JWT Token nếu đăng nhập thành công \\ \hline
-    \multirow[t]{4}{0.2\textwidth}{Database}    & \multirow[t]{4}{0.2\textwidth}{Tương tác với cơ sở dữ liệu}     & url                        & Đường dẫn để kết nối tới cơ sở dữ liệu                                       \\ \cline{3-4}
-                                                &                                                                 & connect()                  & Kết nối tới cơ sở dữ liệu                                                    \\ \cline{3-4}
-                                                &                                                                 & create\_user(new\_user)    & Tạo một người dùng mới trong cơ sở dữ liệu                                   \\ \cline{3-4}
-                                                &                                                                 & get\_user(user\_info)      & Đọc thông tin về về người dùng từ cơ sở dữ liệu                              \\ \hline
+    Tên lớp                                       & Mô tả lớp                                                         & Tên thuộc tính/ phương thức & Mô tả thuộc tính/ phương thức                                                \\ \hline
+    \multirow[t]{2}{0.175\textwidth}{UserHandler} & \multirow[t]{2}{0.175\textwidth}{Xử lý các yêu cầu thông qua API} & create\_user(user\_info)    & Tạo một user mới với thông tin tương ứng với user\_info                      \\ \hline
+                                                  &                                                                   & login(username, password)   & Đăng nhập người dùng vào hệ thống. Trả về JWT Token nếu đăng nhập thành công \\ \hline
+    \multirow[t]{4}{0.175\textwidth}{Database}    & \multirow[t]{4}{0.175\textwidth}{Tương tác với cơ sở dữ liệu}     & url                         & Đường dẫn để kết nối tới cơ sở dữ liệu                                       \\ \cline{3-4}
+                                                  &                                                                   & connect()                   & Kết nối tới cơ sở dữ liệu                                                    \\ \cline{3-4}
+                                                  &                                                                   & create\_user(new\_user)     & Tạo một người dùng mới trong cơ sở dữ liệu                                   \\ \cline{3-4}
+                                                  &                                                                   & get\_user(user\_info)       & Đọc thông tin về về người dùng từ cơ sở dữ liệu                              \\ \hline
 \end{longtable}
 
 \subsubsection{Thiết kế cơ sở dữ liệu}
@@ -164,15 +164,15 @@ tiết các lớp được mô tả ở Bảng \ref{tab:classAccountService}
 Thiết kế chi tiết cơ sở dữ liệu cho Account Service được trình bày ở Bảng
 \ref{tab:dbAccountService}
 
-\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.4\textwidth}|}
+\begin{longtable}{|p{0.175\textwidth}|p{0.175\textwidth}|p{0.175\textwidth}|p{0.35\textwidth}|}
     \caption{Chi tiết cơ sở dữ liệu của Account service}
-    \label{tab:dbAccountService}                                                                               \\
+    \label{tab:dbAccountService}                                                                                 \\
     \hline
-    Collection                           & Tên trường     & Kiểu dữ liệu & Mô tả                               \\ \hline
-    \multirow[t]{4}{0.2\textwidth}{User} & user\_id       & ObjectId     & ID của người dùng                   \\ \cline{2-4}
-                                         & username       & String       & Tên của người dùng                  \\ \cline{2-4}
-                                         & email          & String       & Email của người dùng                \\ \cline{2-4}
-                                         & password\_hash & String       & Giá trị băm của mật khẩu người dùng \\ \hline
+    Collection                             & Tên trường     & Kiểu dữ liệu & Mô tả                               \\ \hline
+    \multirow[t]{4}{0.175\textwidth}{User} & user\_id       & ObjectId     & ID của người dùng                   \\ \cline{2-4}
+                                           & username       & String       & Tên của người dùng                  \\ \cline{2-4}
+                                           & email          & String       & Email của người dùng                \\ \cline{2-4}
+                                           & password\_hash & String       & Giá trị băm của mật khẩu người dùng \\ \hline
 \end{longtable}
 
 \subsection{Thiết kế Core Service}
@@ -186,39 +186,40 @@ Thiết kế chi tiết cơ sở dữ liệu cho Account Service được trình
     \label{fig:classCoreService}
 \end{figure}
 
-Hình \ref{fig:classNetworkService} mô tả biểu đồ lớp của Core Service. Thông tin các lớp được mô tả chi tiết ở Bảng \ref{tab:classCoreService}
+Hình \ref{fig:classNetworkService} mô tả biểu đồ lớp của Core Service. Thông
+tin các lớp được mô tả chi tiết ở Bảng \ref{tab:classCoreService}
 
-\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|}
+\begin{longtable}{|p{0.175\textwidth}|p{0.175\textwidth}|p{0.2625\textwidth}|p{0.2625\textwidth}|}
     \caption{Mô tả chi tiết các lớp của Core Service}
-    \label{tab:classCoreService}                                                                                                                                                                                                                                                                                       \\
+    \label{tab:classCoreService}                                                                                                                                                                                                                                                                                           \\
     \hline
-    Tên lớp                                      & Mô tả lớp                                                                        & Tên thuộc tính/phương thức                                                        & Mô tả thuộc tính/phương thức                                                                 \\ \hline
-    \multirow[t]{11}{0.2\textwidth}{ApiHandler}  & \multirow[t]{11}{0.2\textwidth}{Xử lý các yêu cầu thông qua API}                 & \hspace{0pt}create\_network\hspace{0pt}(user\_id, network\_info)                  & Tạo mới cho người dùng có ID user\_id một mạng có cấu hình network\_info                     \\ \cline{3-4}
-                                                 &                                                                                  & \hspace{0pt}get\_network\hspace{0pt}(network\_id)                                 & Lấy thông tin về mạng có ID network\_id                                                      \\ \cline{3-4}
-                                                 &                                                                                  & \hspace{0pt}get\_user\_networks\hspace{0pt}(user\_id)                             & Lấy thông tin về tất cả mạng của người dùng có ID user\_id                                   \\ \hline
-                                                 &                                                                                  & \hspace{0pt}update\_network\hspace{0pt}(network\_id, new\_info)                   & Cập nhật mạng có ID network\_id cấu hình mới new\_info                                       \\ \cline{3-4}
-                                                 &                                                                                  & \hspace{0pt}delete\_network\hspace{0pt}(network\_id)                              & Xóa mạng có ID network\_id                                                                   \\ \cline{3-4}
-                                                 &                                                                                  & \hspace{0pt}create\_resource\hspace{0pt}(network\_id, resource\_info)             & Tạo một node ngoài có cấu hình resource\_info cho mạng có ID network\_id                     \\ \cline{3-4}
-                                                 &                                                                                  & \hspace{0pt}create\_dapp\hspace{0pt}(network\_id, dapp\_info)                     & Tạo mới một ứng dụng phi tập trung có cấu hình dapp\_info cho mạng có ID network\_Id         \\ \cline{3-4}
-                                                 &                                                                                  & \hspace{0pt}get\_dapp\hspace{0pt}(dapp\_id)                                       & Lấy thông tin về ứng dụng phi tập trung có ID dapp\_id                                       \\ \cline{3-4}
-                                                 &                                                                                  & \hspace{0pt}get\_user\_dapps\hspace{0pt}(user\_id)                                & Lấy thông tin về tất cả ứng dụng phi tập trung của người dùng có ID user\_id                 \\ \cline{3-4}
-                                                 &                                                                                  & \hspace{0pt}update\_dapp\hspace{0pt}(dapp\_id, new\_info)                         & Cập nhật mạng có ID dapp\_id cấu hình mới new\_info                                          \\ \cline{3-4}
-                                                 &                                                                                  & \hspace{0pt}delete\_dapp\hspace{0pt}(dapp\_id)                                    & Xóa ứng dụng có ID dapp\_id                                                                  \\ \hline
-    \multirow[t]{7}{0.2\textwidth}{EventHandler} & \multirow[t]{7}{0.2\textwidth}{Xử lý sự kiện được thông báo từ các dịch vụ khác} & \hspace{0pt}handle\_\hspace{0pt}create\_\hspace{0pt}network\_\hspace{0pt}event()  & Xử lý sự kiện mạng mới được tạo                                                              \\ \cline{3-4}
-                                                 &                                                                                  & \hspace{0pt}handle\_\hspace{0pt}update\_\hspace{0pt}network\_\hspace{0pt}event()  & Xử lý sự kiện mạng được cập nhật                                                             \\ \cline{3-4}
-                                                 &                                                                                  & \hspace{0pt}handle\_\hspace{0pt}delete\_\hspace{0pt}network\_\hspace{0pt}event()  & Xử lý sự kiện mạng được xóa                                                                  \\ \cline{3-4}
-                                                 &                                                                                  & \hspace{0pt}handle\_\hspace{0pt}create\_\hspace{0pt}resource\_\hspace{0pt}event() & Xử lý sự kiện node ngoài được tạo                                                            \\ \cline{3-4}
-                                                 &                                                                                  & \hspace{0pt}handle\_\hspace{0pt}create\_\hspace{0pt}dapp\_\hspace{0pt}event()     & Xử lý sự kiện ứng dụng phi tập trung được tạo                                                \\ \hline
-                                                 &                                                                                  & \hspace{0pt}handle\_\hspace{0pt}update\_\hspace{0pt}dapp\_\hspace{0pt}event()     & Xử lý sự kiện ứng dụng phi tập trung được cập nhật                                                \\ \cline{3-4}
-                                                 &                                                                                  & \hspace{0pt}handle\_\hspace{0pt}delete\_\hspace{0pt}dapp\_\hspace{0pt}event()     & Xử lý sự kiện ứng dụng phi tập trung bị xóa                                                \\ \hline
-    \multirow[t]{5}{0.2\textwidth}{Database}     & \multirow[t]{5}{0.2\textwidth}{Tương tác với cơ sở dữ liệu}                      & \hspace{0pt}url                                                                   & Đường dẫn kết nối tới cơ sở dữ liệu                                                          \\ \cline{3-4}
-                                                 &                                                                                  & \hspace{0pt}connect\hspace{0pt}()                                                 & Kết nối tới cơ sở dữ liệu                                                                    \\ \cline{3-4}
-                                                 &                                                                                  & \hspace{0pt}CRUD\_network\hspace{0pt}()                                           & Đọc ghi xóa sửa thông tin mạng trong cơ sở dữ liệu                                           \\ \cline{3-4}
-                                                 &                                                                                  & \hspace{0pt}create\_resource\hspace{0pt}()                                        & Ghi thông tin node ngoài mới vào cơ sở dữ liệu                                               \\ \cline{3-4}
-                                                 &                                                                                  & \hspace{0pt}CRUD\_dapp\hspace{0pt}()                                              & Đọc ghi xóa sủa thông tin ứng dụng phi tập trung trong cơ sở dữ liệu                         \\ \hline
-    \multirow[t]{3}{0.2\textwidth}{BrokerClient} & \multirow[t]{3}{0.2\textwidth}{Tương tác với message broker}                     & \hspace{0pt}url                                                                   & Đường dẫn để kết nối tới message broker                                                      \\ \cline{3-4}
-                                                 &                                                                                  & \hspace{0pt}consume\hspace{0pt}(queue\_name, handler)                             & Lắng nghe sự kiện từ hàng đợi queue\_name của message broker và xử lý xử kiện đó với handler \\ \cline{3-4}
-                                                 &                                                                                  & \hspace{0pt}publish\hspace{0pt}(queue\_name, message)                             & Gửi một message tới hàng đợi queue\_name của message broker                                  \\ \hline
+    Tên lớp                                        & Mô tả lớp                                                                          & Tên thuộc tính/ phương thức                                                       & Mô tả thuộc tính/ phương thức                                                                \\ \hline
+    \multirow[t]{11}{0.175\textwidth}{ApiHandler}  & \multirow[t]{11}{0.175\textwidth}{Xử lý các yêu cầu thông qua API}                 & \hspace{0pt}create\_network\hspace{0pt}(user\_id, network\_info)                  & Tạo mới cho người dùng có ID user\_id một mạng có cấu hình network\_info                     \\ \cline{3-4}
+                                                   &                                                                                    & \hspace{0pt}get\_network\hspace{0pt}(network\_id)                                 & Lấy thông tin về mạng có ID network\_id                                                      \\ \cline{3-4}
+                                                   &                                                                                    & \hspace{0pt}get\_user\_networks\hspace{0pt}(user\_id)                             & Lấy thông tin về tất cả mạng của người dùng có ID user\_id                                   \\ \hline
+                                                   &                                                                                    & \hspace{0pt}update\_network\hspace{0pt}(network\_id, new\_info)                   & Cập nhật mạng có ID network\_id cấu hình mới new\_info                                       \\ \cline{3-4}
+                                                   &                                                                                    & \hspace{0pt}delete\_network\hspace{0pt}(network\_id)                              & Xóa mạng có ID network\_id                                                                   \\ \cline{3-4}
+                                                   &                                                                                    & \hspace{0pt}create\_resource\hspace{0pt}(network\_id, resource\_info)             & Tạo một node ngoài có cấu hình resource\_info cho mạng có ID network\_id                     \\ \cline{3-4}
+                                                   &                                                                                    & \hspace{0pt}create\_dapp\hspace{0pt}(network\_id, dapp\_info)                     & Tạo mới một ứng dụng phi tập trung có cấu hình dapp\_info cho mạng có ID network\_Id         \\ \cline{3-4}
+                                                   &                                                                                    & \hspace{0pt}get\_dapp\hspace{0pt}(dapp\_id)                                       & Lấy thông tin về ứng dụng phi tập trung có ID dapp\_id                                       \\ \cline{3-4}
+                                                   &                                                                                    & \hspace{0pt}get\_user\_dapps\hspace{0pt}(user\_id)                                & Lấy thông tin về tất cả ứng dụng phi tập trung của người dùng có ID user\_id                 \\ \cline{3-4}
+                                                   &                                                                                    & \hspace{0pt}update\_dapp\hspace{0pt}(dapp\_id, new\_info)                         & Cập nhật mạng có ID dapp\_id cấu hình mới new\_info                                          \\ \cline{3-4}
+                                                   &                                                                                    & \hspace{0pt}delete\_dapp\hspace{0pt}(dapp\_id)                                    & Xóa ứng dụng có ID dapp\_id                                                                  \\ \hline
+    \multirow[t]{7}{0.175\textwidth}{EventHandler} & \multirow[t]{7}{0.175\textwidth}{Xử lý sự kiện được thông báo từ các dịch vụ khác} & \hspace{0pt}handle\_\hspace{0pt}create\_\hspace{0pt}network\_\hspace{0pt}event()  & Xử lý sự kiện mạng mới được tạo                                                              \\ \cline{3-4}
+                                                   &                                                                                    & \hspace{0pt}handle\_\hspace{0pt}update\_\hspace{0pt}network\_\hspace{0pt}event()  & Xử lý sự kiện mạng được cập nhật                                                             \\ \cline{3-4}
+                                                   &                                                                                    & \hspace{0pt}handle\_\hspace{0pt}delete\_\hspace{0pt}network\_\hspace{0pt}event()  & Xử lý sự kiện mạng được xóa                                                                  \\ \cline{3-4}
+                                                   &                                                                                    & \hspace{0pt}handle\_\hspace{0pt}create\_\hspace{0pt}resource\_\hspace{0pt}event() & Xử lý sự kiện node ngoài được tạo                                                            \\ \hline
+                                                   &                                                                                    & \hspace{0pt}handle\_\hspace{0pt}create\_\hspace{0pt}dapp\_\hspace{0pt}event()     & Xử lý sự kiện ứng dụng phi tập trung được tạo                                                \\ \cline{3-4}
+                                                   &                                                                                    & \hspace{0pt}handle\_\hspace{0pt}update\_\hspace{0pt}dapp\_\hspace{0pt}event()     & Xử lý sự kiện ứng dụng phi tập trung được cập nhật                                           \\ \cline{3-4}
+                                                   &                                                                                    & \hspace{0pt}handle\_\hspace{0pt}delete\_\hspace{0pt}dapp\_\hspace{0pt}event()     & Xử lý sự kiện ứng dụng phi tập trung bị xóa                                                  \\ \hline
+    \multirow[t]{5}{0.175\textwidth}{Database}     & \multirow[t]{5}{0.175\textwidth}{Tương tác với cơ sở dữ liệu}                      & \hspace{0pt}url                                                                   & Đường dẫn kết nối tới cơ sở dữ liệu                                                          \\ \cline{3-4}
+                                                   &                                                                                    & \hspace{0pt}connect\hspace{0pt}()                                                 & Kết nối tới cơ sở dữ liệu                                                                    \\ \cline{3-4}
+                                                   &                                                                                    & \hspace{0pt}CRUD\_network\hspace{0pt}()                                           & Đọc ghi xóa sửa thông tin mạng trong cơ sở dữ liệu                                           \\ \cline{3-4}
+                                                   &                                                                                    & \hspace{0pt}create\_resource\hspace{0pt}()                                        & Ghi thông tin node ngoài mới vào cơ sở dữ liệu                                               \\ \cline{3-4}
+                                                   &                                                                                    & \hspace{0pt}CRUD\_dapp\hspace{0pt}()                                              & Đọc ghi xóa sủa thông tin ứng dụng phi tập trung trong cơ sở dữ liệu                         \\ \hline
+    \multirow[t]{3}{0.175\textwidth}{BrokerClient} & \multirow[t]{3}{0.175\textwidth}{Tương tác với message broker}                     & \hspace{0pt}url                                                                   & Đường dẫn để kết nối tới message broker                                                      \\ \cline{3-4}
+                                                   &                                                                                    & \hspace{0pt}consume\hspace{0pt}(queue\_name, handler)                             & Lắng nghe sự kiện từ hàng đợi queue\_name của message broker và xử lý xử kiện đó với handler \\ \cline{3-4}
+                                                   &                                                                                    & \hspace{0pt}publish\hspace{0pt}(queue\_name, message)                             & Gửi một message tới hàng đợi queue\_name của message broker                                  \\ \hline
 \end{longtable}
 
 \subsubsection{Thiết kế cơ sở dữ liệu}
@@ -229,38 +230,38 @@ Thiết kế chi tiết cơ sở dữ liệu cho Core Service được trình b�
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 
-\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.4\textwidth}|}
+\begin{longtable}{|p{0.175\textwidth}|p{0.175\textwidth}|p{0.175\textwidth}|p{0.35\textwidth}|}
     \caption{Chi tiết cơ sở dữ liệu của Core Service}
-    \label{tab:dbCoreService}                                                                                                   \\
+    \label{tab:dbCoreService}                                                                                                     \\
     \hline
-    Collection                                   & Tên trường         & Kiểu dữ liệu & Mô tả                                    \\ \hline
+    Collection                                     & Tên trường         & Kiểu dữ liệu & Mô tả                                    \\ \hline
     \endhead
-    \multirow[t]{4}{0.2\textwidth}{Network}      & network\_id        & ObjectId     & ID của mạng                              \\ \cline{2-4}
-                                                 & user\_id           & ObjectId     & ID của người dùng sở hữu mạng            \\ \cline{2-4}
-                                                 & network\_name      & String       & Tên của mạng                             \\ \cline{2-4}
-                                                 & network\_config    & Object       & Cấu hình mạng                            \\ \hline
-    \multirow[t]{4}{0.2\textwidth}{Organization} & organization\_id   & ObjectId     & ID của tổ chức                           \\ \cline{2-4}
-                                                 & network\_id        & ObjectId     & ID của mạng mà tổ chức thuộc về          \\ \cline{2-4}
-                                                 & organization\_name & String       & Tên tổ chức                              \\ \cline{2-4}
-                                                 & number\_peer       & Number       & Số peer node trong tổ chức               \\ \hline
-    \multirow[t]{5}{0.2\textwidth}{Resource}     & resource\_id       & ObjectId     & ID của node ngoài                        \\ \cline{2-4}
-                                                 & organization\_id   & ObjectId     & ID của tổ chức mà node ngoài thuộc về    \\ \cline{2-4}
-                                                 & resource\_name     & String       & Tên node ngoài                           \\ \cline{2-4}
-                                                 & ip                 & String       & Địa chỉ IP của máy mà node ngoài sẽ chạy \\ \cline{2-4}
-                                                 & port               &              & Cổng mạng của máy mà node ngoài sẽ chạy  \\ \hline
-    \multirow[t]{3}{0.2\textwidth}{Dapp}         & dapp\_id           & ObjectId     & ID của ứng dụng                          \\ \cline{2-4}
-                                                 & network\_id        & ObjectId     & ID của mạng mà ứng dụng thuộc về         \\ \cline{2-4}
-                                                 & dapp\_name         & String       & Tên ứng dụng                             \\ \hline
-    \multirow[t]{3}{0.2\textwidth}{Entity}       & entity\_id         & ObjectId     & ID của thực thể                          \\ \cline{2-4}
-                                                 & dapp\_id           & ObjectId     & ID của ứng dụng mà thực thể thuộc về     \\ \cline{2-4}
-                                                 & entity\_name       & String       & Tên ứng dụng                             \\ \hline
-    \multirow[t]{4}{0.2\textwidth}{Attribute}    & attribute\_id      & ObjectId     & ID của thuộc tính                        \\ \cline{2-4}
-                                                 & entity\_id         & ObjectId     & ID của thực thể mà thuộc tính thuộc về   \\ \cline{2-4}
-                                                 & attribute\_name    & String       & Tên thuộc tính                           \\ \cline{2-4}
-                                                 & type               & String       & Kiểu dữ liệu của thuộc tính              \\ \hline
-    \multirow[t]{3}{0.2\textwidth}{Relationship} & entity\_id1        & ObjectId     & ID của thực thể đầu tiên                 \\ \cline{2-4}
-                                                 & entity\_id2        & ObjectId     & ID của thực thể còn lại                  \\ \cline{2-4}
-                                                 & type               & String       & Kiểu quan hệ                             \\ \hline
+    \multirow[t]{4}{0.175\textwidth}{Network}      & network\_id        & ObjectId     & ID của mạng                              \\ \cline{2-4}
+                                                   & user\_id           & ObjectId     & ID của người dùng sở hữu mạng            \\ \cline{2-4}
+                                                   & network\_name      & String       & Tên của mạng                             \\ \cline{2-4}
+                                                   & network\_config    & Object       & Cấu hình mạng                            \\ \hline
+    \multirow[t]{4}{0.175\textwidth}{Organization} & organization\_id   & ObjectId     & ID của tổ chức                           \\ \cline{2-4}
+                                                   & network\_id        & ObjectId     & ID của mạng mà tổ chức thuộc về          \\ \cline{2-4}
+                                                   & organization\_name & String       & Tên tổ chức                              \\ \cline{2-4}
+                                                   & number\_peer       & Number       & Số peer node trong tổ chức               \\ \hline
+    \multirow[t]{5}{0.175\textwidth}{Resource}     & resource\_id       & ObjectId     & ID của node ngoài                        \\ \cline{2-4}
+                                                   & organization\_id   & ObjectId     & ID của tổ chức mà node ngoài thuộc về    \\ \cline{2-4}
+                                                   & resource\_name     & String       & Tên node ngoài                           \\ \cline{2-4}
+                                                   & ip                 & String       & Địa chỉ IP của máy mà node ngoài sẽ chạy \\ \cline{2-4}
+                                                   & port               &              & Cổng mạng của máy mà node ngoài sẽ chạy  \\ \hline
+    \multirow[t]{3}{0.175\textwidth}{Dapp}         & dapp\_id           & ObjectId     & ID của ứng dụng                          \\ \cline{2-4}
+                                                   & network\_id        & ObjectId     & ID của mạng mà ứng dụng thuộc về         \\ \cline{2-4}
+                                                   & dapp\_name         & String       & Tên ứng dụng                             \\ \hline
+    \multirow[t]{3}{0.175\textwidth}{Entity}       & entity\_id         & ObjectId     & ID của thực thể                          \\ \cline{2-4}
+                                                   & dapp\_id           & ObjectId     & ID của ứng dụng mà thực thể thuộc về     \\ \cline{2-4}
+                                                   & entity\_name       & String       & Tên ứng dụng                             \\ \hline
+    \multirow[t]{4}{0.175\textwidth}{Attribute}    & attribute\_id      & ObjectId     & ID của thuộc tính                        \\ \cline{2-4}
+                                                   & entity\_id         & ObjectId     & ID của thực thể mà thuộc tính thuộc về   \\ \cline{2-4}
+                                                   & attribute\_name    & String       & Tên thuộc tính                           \\ \cline{2-4}
+                                                   & type               & String       & Kiểu dữ liệu của thuộc tính              \\ \hline
+    \multirow[t]{3}{0.175\textwidth}{Relationship} & entity\_id1        & ObjectId     & ID của thực thể đầu tiên                 \\ \cline{2-4}
+                                                   & entity\_id2        & ObjectId     & ID của thực thể còn lại                  \\ \cline{2-4}
+                                                   & type               & String       & Kiểu quan hệ                             \\ \hline
 \end{longtable}
 
 \subsection{Thiết kế Network Service}
@@ -275,28 +276,28 @@ Thiết kế chi tiết cơ sở dữ liệu cho Core Service được trình b�
 Hình \ref{fig:classNetworkService} mô tả biểu đồ lớp của Network Service. Chi
 tiết các lớp được mô tả ở Bảng \ref{tab:classNetworkService}
 
-\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|}
+\begin{longtable}{|p{0.175\textwidth}|p{0.175\textwidth}|p{0.2625\textwidth}|p{0.2625\textwidth}|}
     \caption{Mô tả chi tiết các lớp của Network service}
-    \label{tab:classNetworkService}                                                                                                                                                                                                                                             \\
+    \label{tab:classNetworkService}                                                                                                                                                                                                                                                \\
     \hline
-    Tên lớp                                                  & Mô tả lớp                                                               & Tên thuộc tính/phương thức                                 & Mô tả thuộc tính/phương thức                                              \\ \hline
+    Tên lớp                                                    & Mô tả lớp                                                                 & Tên thuộc tính/ phương thức                               & Mô tả thuộc tính/ phương thức                                             \\ \hline
     \endhead
-    \multirow[t]{4}{0.2\textwidth}{\hspace{0pt}EventHandler} & \multirow[t]{4}{0.2\textwidth}{Xử lý yêu cầu từ Core Service}          & create\_network\hspace{0pt}(network\_info)                 & Xử lý yêu cầu tạo mạng với cấu hình network\_info                         \\ \cline{3-4}
-                                                             &                                                                         & update\_network\hspace{0pt}(network\_id, new\_info)        & Xử lý yều cầu cập nhật mạng có ID network\_id với thông tin mới new\_info \\ \cline{3-4}
-                                                             &                                                                         & delete\_network\hspace{0pt}(network\_id)                   & Xử lý yêu cầu xóa mạng có ID network\_id                                  \\ \cline{3-4}
-                                                             &                                                                         & create\_resource\hspace{0pt}(resource\_info)               & Xử lý yêu cầu tạo node ngoài có cấu hình resource\_info                   \\ \hline
-    \multirow[t]{4}{0.2\textwidth}{\hspace{0pt}WorkerCaller} & \multirow[t]{4}{0.2\textwidth}{Yêu cầu Network Worker thực hiện tác vụ} & create\_network\hspace{0pt}(network\_info)                 & Yêu cầu tạo mạng với cấu hình network\_info                               \\ \cline{3-4}
-                                                             &                                                                         & update\_network\hspace{0pt}(network\_id, new\_info)        & Yêu cầu cập nhật mạng có ID network\_id với thông tin mới new\_info       \\ \hline
-                                                             &                                                                         & delete\_network\hspace{0pt}(network\_id)                   & Yêu cầu xóa mạng có ID network\_id                                        \\ \cline{3-4}
-                                                             &                                                                         & create\_resource\hspace{0pt}(resource\_info)               & Yêu cầu tạo node ngoài có cấu hình resource\_info                         \\ \hline
-    BrokerClient                                             & Tương tác với message broker                                            & \multicolumn{2}{p{0.6\textwidth}|}{Tương tự Core Service}                                                                             \\ \hline
+    \multirow[t]{4}{0.175\textwidth}{\hspace{0pt}EventHandler} & \multirow[t]{4}{0.175\textwidth}{Xử lý yêu cầu từ Core Service}           & create\_network\hspace{0pt}(network\_info)                & Xử lý yêu cầu tạo mạng với cấu hình network\_info                         \\ \cline{3-4}
+                                                               &                                                                           & update\_network\hspace{0pt}(network\_id, new\_info)       & Xử lý yều cầu cập nhật mạng có ID network\_id với thông tin mới new\_info \\ \cline{3-4}
+                                                               &                                                                           & delete\_network\hspace{0pt}(network\_id)                  & Xử lý yêu cầu xóa mạng có ID network\_id                                  \\ \cline{3-4}
+                                                               &                                                                           & create\_resource\hspace{0pt}(resource\_info)              & Xử lý yêu cầu tạo node ngoài có cấu hình resource\_info                   \\ \hline
+    \multirow[t]{4}{0.175\textwidth}{\hspace{0pt}WorkerCaller} & \multirow[t]{4}{0.175\textwidth}{Yêu cầu Network Worker thực hiện tác vụ} & create\_network\hspace{0pt}(network\_info)                & Yêu cầu tạo mạng với cấu hình network\_info                               \\ \cline{3-4}
+                                                               &                                                                           & update\_network\hspace{0pt}(network\_id, new\_info)       & Yêu cầu cập nhật mạng có ID network\_id với thông tin mới new\_info       \\ \hline
+                                                               &                                                                           & delete\_network\hspace{0pt}(network\_id)                  & Yêu cầu xóa mạng có ID network\_id                                        \\ \cline{3-4}
+                                                               &                                                                           & create\_resource\hspace{0pt}(resource\_info)              & Yêu cầu tạo node ngoài có cấu hình resource\_info                         \\ \hline
+    BrokerClient                                               & Tương tác với message broker                                              & \multicolumn{2}{p{0.525\textwidth}|}{Tương tự Core Service}                                                                             \\ \hline
 \end{longtable}
 
 \subsection{Thiết kế Network Worker}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\linewidth]{Hinhve/DoAn-ClassNetworkWorker.drawio.png}
+    \includegraphics[width=0.5\linewidth]{Hinhve/DoAn-ClassNetworkWorker.drawio.png}
     \caption{Biểu đồ lớp Network Worker}
     \label{fig:classNetworkWorker}
 \end{figure}
@@ -304,26 +305,26 @@ tiết các lớp được mô tả ở Bảng \ref{tab:classNetworkService}
 Hình \ref{fig:classNetworkWorker} mô tả biểu đồ lớp của Network Worker. Chi
 tiết các lớp được mô tả ở Bảng \ref{tab:classNetworkWorker}
 
-\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|}
+\begin{longtable}{|p{0.175\textwidth}|p{0.175\textwidth}|p{0.2625\textwidth}|p{0.2625\textwidth}|}
     \caption{Mô tả chi tiết các lớp của Network Worker}
-    \label{tab:classNetworkWorker}                                                                                                                                                                                                                          \\
+    \label{tab:classNetworkWorker}                                                                                                                                                                                                                                          \\
     \hline
-    Tên lớp                                     & Mô tả lớp                                                               & Tên thuộc tính/phương thức                          & Mô tả thuộc tính/phương thức                                              \\ \hline
+    Tên lớp                                       & Mô tả lớp                                                                 & Tên thuộc tính/ phương thức                                     & Mô tả thuộc tính/ phương thức                                             \\ \hline
     \endhead
-    \multirow[t]{4}{0.2\textwidth}{TaskHandler} & \multirow[t]{4}{0.2\textwidth}{Xử lý yêu cầu từ Network Service}        & create\_network\hspace{0pt}(network\_info)          & Xử lý yêu cầu tạo mạng với cấu hình network\_info                         \\ \hline
-                                                &                                                                         & update\_network\hspace{0pt}(network\_id, new\_info) & Xử lý yều cầu cập nhật mạng có ID network\_id với thông tin mới new\_info \\ \cline{3-4}
-                                                &                                                                         & delete\_network\hspace{0pt}(network\_id)            & Xử lý yêu cầu xóa mạng có ID network\_id                                  \\ \cline{3-4}
-                                                &                                                                         & create\_resource\hspace{0pt}(resource\_info)        & Xử lý yêu cầu tạo node ngoài có cấu hình resource\_info                   \\ \hline
-    \multirow[t]{2}{0.2\textwidth}{CloudClient} & \multirow[t]{2}{0.2\textwidth}{Tương tác với dịch vụ điện toán đám mây} & create\_k8s\_cluster\hspace{0pt}(cluster\_info)     & Tạo một cụm Kubernetes                                                    \\ \cline{3-4}
-                                                &                                                                         & delete\_k8s\_cluster\hspace{0pt}(cluster\_id)       & Xóa một cụm Kubernetes                                                    \\ \hline
-    \multirow[t]{4}{0.2\textwidth}{Deployer}    & \multirow[t]{4}{0.2\textwidth}{Triển khai và quản lý mạng}              & deploy\_ca()                                        & Triển khai Nhà cung cấp chứng chỉ số                                      \\ \cline{3-4}
-                                                &                                                                         & deploy\_orderer()                                   & Triển khai Orderer node                                                   \\ \cline{3-4}
-                                                &                                                                         & create\_channel()                                   & Tạo một kênh cho mạng                                                     \\ \cline{3-4}
-                                                &                                                                         & deploy\_peer()                                      & Triển khai Peer node                                                      \\ \hline
-    \multirow[t]{2}{0.2\textwidth}{K8SClient}   & \multirow[t]{2}{0.2\textwidth}{Tương tác với cụm Kubernetes}            & apply()                                             & Thực hiện tác vụ tạo hoặc cập nhật trên cụm Kubernets                     \\ \cline{3-4}
-                                                &                                                                         & delete()                                            & Thực hiện tác vụ tạo xóa trên cụm Kubernets                               \\ \hline
-    Generator                                   & Tạo tệp tin                                                             & generate\_network\_files\hspace{0pt}(network\_info) & Tạo các tập tin cho quá trình tạo mạng                                    \\ \hline
-    BrokerClient                                & Tương tác với message broker                                            & Tương tự Core Service                              & Đường dẫn để kết nối tới message broker                                   \\ \hline
+    \multirow[t]{4}{0.175\textwidth}{TaskHandler} & \multirow[t]{4}{0.175\textwidth}{Xử lý yêu cầu từ Network Service}        & create\_network\hspace{0pt}(network\_info)                      & Xử lý yêu cầu tạo mạng với cấu hình network\_info                         \\ \hline
+                                                  &                                                                           & update\_network\hspace{0pt}(network\_id, new\_info)             & Xử lý yều cầu cập nhật mạng có ID network\_id với thông tin mới new\_info \\ \cline{3-4}
+                                                  &                                                                           & delete\_network\hspace{0pt}(network\_id)                        & Xử lý yêu cầu xóa mạng có ID network\_id                                  \\ \cline{3-4}
+                                                  &                                                                           & create\_resource\hspace{0pt}(resource\_info)                    & Xử lý yêu cầu tạo node ngoài có cấu hình resource\_info                   \\ \hline
+    \multirow[t]{2}{0.175\textwidth}{CloudClient} & \multirow[t]{2}{0.175\textwidth}{Tương tác với dịch vụ điện toán đám mây} & create\_k8s\_cluster\hspace{0pt}(cluster\_info)                 & Tạo một cụm Kubernetes                                                    \\ \cline{3-4}
+                                                  &                                                                           & delete\_k8s\_cluster\hspace{0pt}(cluster\_id)                   & Xóa một cụm Kubernetes                                                    \\ \hline
+    \multirow[t]{4}{0.175\textwidth}{Deployer}    & \multirow[t]{4}{0.175\textwidth}{Triển khai và quản lý mạng}              & deploy\_ca()                                                    & Triển khai Nhà cung cấp chứng chỉ số                                      \\ \cline{3-4}
+                                                  &                                                                           & deploy\_orderer()                                               & Triển khai Orderer node                                                   \\ \cline{3-4}
+                                                  &                                                                           & create\_channel()                                               & Tạo một kênh cho mạng                                                     \\ \cline{3-4}
+                                                  &                                                                           & deploy\_peer()                                                  & Triển khai Peer node                                                      \\ \hline
+    \multirow[t]{2}{0.175\textwidth}{K8SClient}   & \multirow[t]{2}{0.175\textwidth}{Tương tác với cụm Kubernetes}            & apply()                                                         & Thực hiện tác vụ tạo hoặc cập nhật trên cụm Kubernets                     \\ \cline{3-4}
+                                                  &                                                                           & delete()                                                        & Thực hiện tác vụ tạo xóa trên cụm Kubernets                               \\ \hline
+    Generator                                     & Tạo tệp tin                                                               & generate\_network\_\hspace{0pt}files\hspace{0pt}(network\_info) & Tạo các tập tin cho quá trình tạo mạng                                    \\ \hline
+    BrokerClient                                  & Tương tác với message broker                                              & Tương tự Core Service                                           & Đường dẫn để kết nối tới message broker                                   \\ \hline
 \end{longtable}
 
 \subsection{Thiết kế Dapp Service}
@@ -338,19 +339,19 @@ tiết các lớp được mô tả ở Bảng \ref{tab:classNetworkWorker}
 Hình \ref{fig:classDappService} mô tả biểu đồ lớp của Dapp Service. Thông tin
 các lớp được mô tả chi tiết ở Bảng \ref{tab:classDappService}
 
-\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|}
+\begin{longtable}{|p{0.175\textwidth}|p{0.175\textwidth}|p{0.2625\textwidth}|p{0.2625\textwidth}|}
     \caption{Mô tả chi tiết các lớp của Dapp service}
-    \label{tab:classDappService}                                                                                                                                                                                                                                              \\
+    \label{tab:classDappService}                                                                                                                                                                                                                                     \\
     \hline
-    Tên lớp                                                  & Mô tả lớp                                                            & Tên thuộc tính/phương thức                                 & Mô tả thuộc tính/phương thức                                               \\ \hline
+    Tên lớp                                        & Mô tả lớp                                                              & Tên thuộc tính/ phương thức                               & Mô tả thuộc tính/ phương thức                                              \\ \hline
     \endhead
-    \multirow[t]{3}{0.2\textwidth}{\hspace{0pt}EventHandler} & \multirow[t]{4}{0.2\textwidth}{Xử lý yêu cầu từ Core Service}       & create\_dapp\hspace{0pt}(dapp\_info)                       & Xử lý yêu cầu tạo ứng dụng với cấu hình dapp\_info                         \\ \cline{3-4}
-                                                             &                                                                      & update\_dapp\hspace{0pt}(dapp\_id, new\_info)              & Xử lý yều cầu cập nhật ứng dụng có ID dapp\_id với thông tin mới new\_info \\ \cline{3-4}
-                                                             &                                                                      & delete\_dapp\hspace{0pt}(dapp\_id)                         & Xử lý yêu cầu xóa ứng dụng có ID dapp\_id                                  \\ \hline
-    \multirow[t]{3}{0.2\textwidth}{\hspace{0pt}WorkerCaller} & \multirow[t]{4}{0.2\textwidth}{Yêu cầu Dapp Worker thực hiện tác vụ} & create\_dapp\hspace{0pt}(dapp\_info)                       & Yêu cầu tạo ứng dụng với cấu hình dapp\_info                               \\ \cline{3-4}
-                                                             &                                                                      & update\_dapp\hspace{0pt}(dapp\_id, new\_info)              & Yêu cầu cập nhật ứng dụng có ID dapp\_id với thông tin mới new\_info       \\ \cline{3-4}
-                                                             &                                                                      & delete\_dapp\hspace{0pt}(dapp\_id)                         & Yêu cầu xóa ứng dụng có ID dapp\_id                                        \\ \hline
-    BrokerClient                                             & Tương tác với message broker                                         & \multicolumn{2}{p{0.6\textwidth}|}{Tương tự Core Service}                                                                              \\ \hline
+    \multirow[t]{3}{0.175\textwidth}{EventHandler} & \multirow[t]{4}{0.175\textwidth}{Xử lý yêu cầu từ Core Service}        & create\_dapp\hspace{0pt}(dapp\_info)                      & Xử lý yêu cầu tạo ứng dụng với cấu hình dapp\_info                         \\ \cline{3-4}
+                                                   &                                                                        & update\_dapp\hspace{0pt}(dapp\_id, new\_info)             & Xử lý yều cầu cập nhật ứng dụng có ID dapp\_id với thông tin mới new\_info \\ \cline{3-4}
+                                                   &                                                                        & delete\_dapp\hspace{0pt}(dapp\_id)                        & Xử lý yêu cầu xóa ứng dụng có ID dapp\_id                                  \\ \hline
+    \multirow[t]{3}{0.175\textwidth}{WorkerCaller} & \multirow[t]{4}{0.175\textwidth}{Yêu cầu Dapp Worker thực hiện tác vụ} & create\_dapp\hspace{0pt}(dapp\_info)                      & Yêu cầu tạo ứng dụng với cấu hình dapp\_info                               \\ \cline{3-4}
+                                                   &                                                                        & update\_dapp\hspace{0pt}(dapp\_id, new\_info)             & Yêu cầu cập nhật ứng dụng có ID dapp\_id với thông tin mới new\_info       \\ \cline{3-4}
+                                                   &                                                                        & delete\_dapp\hspace{0pt}(dapp\_id)                        & Yêu cầu xóa ứng dụng có ID dapp\_id                                        \\ \hline
+    BrokerClient                                   & Tương tác với message broker                                           & \multicolumn{2}{p{0.525\textwidth}|}{Tương tự Core Service}                                                                              \\ \hline
 \end{longtable}
 
 \subsection{Thiết kế Dapp Worker}
@@ -365,27 +366,27 @@ các lớp được mô tả chi tiết ở Bảng \ref{tab:classDappService}
 Hình \ref{fig:classDappWorker} mô tả biểu đồ lớp của Dapp Worker. Chi tiết các
 lớp được mô tả ở Bảng \ref{tab:classDappWorker}
 
-\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|}
+\begin{longtable}{|p{0.175\textwidth}|p{0.175\textwidth}|p{0.2625\textwidth}|p{0.2625\textwidth}|}
     \caption{Mô tả chi tiết các lớp của Dapp Worker}
-    \label{tab:classDappWorker}                                                                                                                                                                                                                             \\
+    \label{tab:classDappWorker}                                                                                                                                                                                                                                 \\
     \hline
-    Tên lớp                                     & Mô tả lớp                                                      & Tên thuộc tính/phương thức                                  & Mô tả thuộc tính/phương thức                                               \\ \hline
+    Tên lớp                                       & Mô tả lớp                                                        & Tên thuộc tính/ phương thức                                 & Mô tả thuộc tính/ phương thức                                              \\ \hline
     \endhead
-    \multirow[t]{3}{0.2\textwidth}{TaskHandler} & \multirow[t]{4}{0.2\textwidth}{Xử lý yêu cầu từ dapp Service}  & create\_dapp\hspace{0pt}(dapp\_info)                        & Xử lý yêu cầu tạo ứng dụng với cấu hình dapp\_info                         \\ \cline{3-4}
-                                                &                                                                & update\_dapp\hspace{0pt}(dapp\_id, new\_info)               & Xử lý yều cầu cập nhật ứng dụng có ID dapp\_id với thông tin mới new\_info \\ \cline{3-4}
-                                                &                                                                & delete\_dapp\hspace{0pt}(dapp\_id)                          & Xử lý yêu cầu xóa ứng dụng có ID dapp\_id                                  \\ \hline
-    \multirow[t]{3}{0.2\textwidth}{Deployer}    & \multirow[t]{4}{0.2\textwidth}{Triển khai và quản lý ứng dụng} & deploy\_chaincode()                                         & Tạo và triển khai chaincode                                                \\ \cline{3-4}
-                                                &                                                                & update\_chaincode()                                         & Cập nhật chaincode                                                         \\ \cline{3-4}
-                                                &                                                                & delete\_chaincode()                                         & Xóa chaincode                                                              \\ \hline
-    K8SClient                                   & Tương tác với cụm Kubernetes                                   & \multicolumn{2}{p{0.6\textwidth}|}{Tương tự Network Worker}                                                                              \\ \hline
-    Generator                                   & Tạo tệp tin                                                    & generate\_dapp\_files\hspace{0pt}(dapp\_info)               & Tạo các tập tin cho quá trình tạo ứng dụng                                 \\ \hline
-    BrokerClient                                & Tương tác với message broker                                   & \multicolumn{2}{p{0.6\textwidth}|}{Tương tự Core Service}                                                                               \\ \hline
+    \multirow[t]{3}{0.175\textwidth}{TaskHandler} & \multirow[t]{4}{0.175\textwidth}{Xử lý yêu cầu từ dapp Service}  & create\_dapp\hspace{0pt}(dapp\_info)                        & Xử lý yêu cầu tạo ứng dụng với cấu hình dapp\_info                         \\ \cline{3-4}
+                                                  &                                                                  & update\_dapp\hspace{0pt}(dapp\_id, new\_info)               & Xử lý yều cầu cập nhật ứng dụng có ID dapp\_id với thông tin mới new\_info \\ \cline{3-4}
+                                                  &                                                                  & delete\_dapp\hspace{0pt}(dapp\_id)                          & Xử lý yêu cầu xóa ứng dụng có ID dapp\_id                                  \\ \hline
+    \multirow[t]{3}{0.175\textwidth}{Deployer}    & \multirow[t]{4}{0.175\textwidth}{Triển khai và quản lý ứng dụng} & deploy\_chaincode()                                         & Tạo và triển khai chaincode                                                \\ \cline{3-4}
+                                                  &                                                                  & update\_chaincode()                                         & Cập nhật chaincode                                                         \\ \cline{3-4}
+                                                  &                                                                  & delete\_chaincode()                                         & Xóa chaincode                                                              \\ \hline
+    K8SClient                                     & Tương tác với cụm Kubernetes                                     & \multicolumn{2}{p{0.525\textwidth}|}{Tương tự Network Worker}                                                                              \\ \hline
+    Generator                                     & Tạo tệp tin                                                      & generate\_dapp\_files\hspace{0pt}(dapp\_info)               & Tạo các tập tin cho quá trình tạo ứng dụng                                 \\ \hline
+    BrokerClient                                  & Tương tác với message broker                                     & \multicolumn{2}{p{0.525\textwidth}|}{Tương tự Core Service}                                                                                \\ \hline
 \end{longtable}
 
 \subsection{Các luồng hoạt động chính}
 
-Mục này sẽ mô tả trình tự tương tác giữa các dịch vụ trong hệ thống để thực hiện
-yêu cầu từ người dùng.
+Mục này sẽ mô tả trình tự tương tác giữa các dịch vụ trong hệ thống để thực
+hiện yêu cầu từ người dùng.
 
 \subsubsection{Tạo mạng}
 
@@ -409,10 +410,10 @@ Quá trình tạo mạng bắt đầu với việc Network Worker yêu cầu t�
 tương ứng với cấu hình người dùng yêu cầu tới nhà cung cấp dịch vụ điện toán
 đám mây. Sau khi một cụm Kubernetes mới đã được tạo, Network Worker sẽ tiến
 hành triển khai một mạng Hyperledger Fabric lên trên cụm Kubernetes này. Bước
-đầu tiên là triển khai các Nhà cung cấp chứng chỉ số. Tiếp đó, sử dụng chứng từ số
-được tạo bởi các nhà cung cấp này, tiến hành triển khai Orderer Node. Tiếp đến,
-thực hiện cấu hình và triển khai một kênh cho các tổ chức trong mạng theo như
-yêu cầu người dùng đã gửi. Kế đến, các Peer node trực thuộc các tổ chức sẽ
+đầu tiên là triển khai các Nhà cung cấp chứng chỉ số. Tiếp đó, sử dụng chứng từ
+số được tạo bởi các nhà cung cấp này, tiến hành triển khai Orderer Node. Tiếp
+đến, thực hiện cấu hình và triển khai một kênh cho các tổ chức trong mạng theo
+như yêu cầu người dùng đã gửi. Kế đến, các Peer node trực thuộc các tổ chức sẽ
 được triển khai và tham gia vào kênh này. Bước cuối cùng trong quá trình tạo
 mạng là triển khai một ứng dụng Explorer để có thể theo dõi các hoạt động trong
 mạng.
@@ -429,8 +430,8 @@ Core Service sẽ thông báo tới giao diện mạng đã triển khai thành 
     \label{fig:seqCreateDapp}
 \end{figure}
 
-Hình \ref{fig:seqCreateDapp} mô tả luồng hoạt động của hệ thống để triển
-khai một ứng dụng phi tập trung cho một mạng Hyperledger Fabric.
+Hình \ref{fig:seqCreateDapp} mô tả luồng hoạt động của hệ thống để triển khai
+một ứng dụng phi tập trung cho một mạng Hyperledger Fabric.
 
 Tương tự như quá trình tạo mạng, người dùng gửi yêu cầu tới Core Service để tạo
 một ứng dụng phi tập trung mới cho một mạng của người dùng. Thông qua giao
@@ -457,21 +458,22 @@ Core Service để dịch vụ này thông báo cho người dùng.
 Hình \ref{fig:seqCreateNetwork} mô tả luồng hoạt động của hệ thống để thêm một
 node ngoài vào mạng.
 
-Người dùng gủi yêu cầu thêm node với cấu hình và địa chỉ IP mã node sẽ chạy tới
+Người dùng gửi yêu cầu thêm node với cấu hình và địa chỉ IP mã node sẽ chạy tới
 Core Service. Yêu cầu sẽ được chuyển tiếp tới Network Service. Dịch vụ này sẽ
 tương tác với mạng đang chạy để tạo một định danh tương ứng cho node mới này.
 Các tệp tin để khởi chạy node đó cũng sẽ được sinh ra.
 
-Khi tệp tin đã được tạo người dùng sẽ nhận được thông báo từ Core Service. Người dùng từ đó tải các
-tệp tin này về, khởi chạy node trên máy có địa chỉ IP mà người dùng cung cấp
-lúc đầu. Node mới khi được khởi chạy sẽ tự động tham gia vào mạng Hyperledger Fabric của người dùng.
+Khi tệp tin đã được tạo người dùng sẽ nhận được thông báo từ Core Service.
+Người dùng từ đó tải các tệp tin này về, khởi chạy node trên máy có địa chỉ IP
+mà người dùng cung cấp lúc đầu. Node mới khi được khởi chạy sẽ tự động tham gia
+vào mạng Hyperledger Fabric của người dùng.
 
 \section{Xây dựng hệ thống}
 \subsection{Thư viện và công cụ sử dụng}
 Quá trình xây dựng và phát triển các dịch vụ trong hệ thống sử dụng những công
 cụ và thư viện được nêu ở Bảng \ref{tab:toolsAndLib}.
 
-\begin{longtable}{|p{0.3\textwidth}|p{0.2\textwidth}|p{0.5\textwidth}|}
+\begin{longtable}{|p{0.2625\textwidth}|p{0.175\textwidth}|p{0.4375\textwidth}|}
     \caption{Danh sách thư viện và công cụ sử dụng}
     \label{tab:toolsAndLib}                                                                                                                  \\
     \hline
@@ -494,8 +496,6 @@ cụ và thư viện được nêu ở Bảng \ref{tab:toolsAndLib}.
     Xây dựng explorer cho mạng Hyperledger Fabric    & Hyperledger Explorer   & \url{https://github.com/hyperledger/blockchain-explorer}     \\ \hline
     Xây dựng hệ thống thông báo thông qua web socket & Notification-socket.io & \url{https://github.com/netbulls/notification-socket.io}     \\ \hline
 \end{longtable}
-
-\subsection{Kết quả đạt được}
 
 \subsection{Minh họa các chức năng chính}
 
@@ -586,7 +586,7 @@ dụng. Ngoài thông tin, cấu trúc tổng quan của ứng dụng cũng đư
     \def\arraystretch{1.5}
     \caption{Kết quả kiểm thử tác vụ tạo mạng}
     \label{tab:TestNetwork}
-    \begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+    \begin{tabular}{|p{0.3\textwidth}|p{0.525\textwidth}|}
         \hline
         Test Case ID                                       & TC1-1                                      \\ \hline
         Tác vụ                                             & Tạo mạng                                   \\ \hline
@@ -611,7 +611,7 @@ dụng. Ngoài thông tin, cấu trúc tổng quan của ứng dụng cũng đư
     \def\arraystretch{1.5}
     \caption{Kết quả kiểm thử tác vụ tạo ứng dụng phi tập trung}
     \label{tab:TestDapp}
-    \begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+    \begin{tabular}{|p{0.3\textwidth}|p{0.525\textwidth}|}
         \hline
         Test Case ID                                       & TC1-2                                       \\ \hline
         Tác vụ                                             & Tạo ứng dụng                                \\ \hline
@@ -636,7 +636,8 @@ dụng. Ngoài thông tin, cấu trúc tổng quan của ứng dụng cũng đư
     \label{fig:TestSDK}
 \end{figure}
 
-Hình \ref{fig:TestSDK} mô tả mô-đun sử dung để kiểm thử SDK. Mô-đun có thể gọi đồng thời các hàm của SDK trên nhiều luồng.
+Hình \ref{fig:TestSDK} mô tả mô-đun sử dung để kiểm thử SDK. Mô-đun có thể gọi
+đồng thời các hàm của SDK trên nhiều luồng.
 
 \begin{figure}[H]
     \centering
@@ -645,7 +646,7 @@ Hình \ref{fig:TestSDK} mô tả mô-đun sử dung để kiểm thử SDK. Mô-
     \label{fig:TestSDKDapp}
 \end{figure}
 
-Để kiểm thử SDK, trước tiên tải về SDK của một ứng dụng có cấu trúc như hình \ref{fig:TestSDKDapp}. Tiếp đó sử dụng mô-đun kiểm thử SDK ở hình \ref{fig:TestSDKDapp} để giả lập việc gọi đồng thời các hàm trong SDK 100 lần rồi đo thời gian cần để hoàn thành tất cả 100 lần gọi đó. Kết quả kiểm thử được mô tả ở Bảng \ref{tab:TestSDKRead} và \ref{tab:testSDKWrite}.
+Để kiểm thử SDK, trước tiên tải về SDK của một ứng dụng có cấu trúc như hình \ref{fig:TestSDKDapp}. Tiếp đó sử dụng mô-đun kiểm thử SDK ở hình \ref{fig:TestSDKDapp} để giả lập việc gọi đồng thời các hàm trong SDK 100 lần rồi đo thời gian cần để hoàn thành tất cả 100 lần gọi đó. Kết quả kiểm thử được mô tả ở Bảng \ref{tab:TestSDKRead} và \ref{tab:TestSDKWrite}.
 
 \begingroup
 \renewcommand{\arraystretch}{1.5} % Default value: 1
@@ -654,7 +655,7 @@ Hình \ref{fig:TestSDK} mô tả mô-đun sử dung để kiểm thử SDK. Mô-
     \def\arraystretch{1.5}
     \caption{Kết quả kiểm thử các tác vụ đọc dữ liệu sử dụng SDK}
     \label{tab:TestSDKRead}
-    \begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+    \begin{tabular}{|p{0.3\textwidth}|p{0.525\textwidth}|}
         \hline
         Test Case ID                                       & TC2-1                                           \\ \hline
         Tác vụ                                             & Đọc dữ liệu từ Sổ cái sử dụng SDK               \\ \hline
@@ -679,7 +680,7 @@ Hình \ref{fig:TestSDK} mô tả mô-đun sử dung để kiểm thử SDK. Mô-
     \def\arraystretch{1.5}
     \caption{Kết quả kiểm thử các tác vụ ghi dữ liệu sử dụng SDK}
     \label{tab:TestSDKWrite}
-    \begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+    \begin{tabular}{|p{0.3\textwidth}|p{0.525\textwidth}|}
         \hline
         Test Case ID                                       & TC1-2                                           \\ \hline
         Tác vụ                                             & Tạo ứng dụng                                    \\ \hline
@@ -697,7 +698,9 @@ Hình \ref{fig:TestSDK} mô tả mô-đun sử dung để kiểm thử SDK. Mô-
 \end{table}
 \endgroup
 
-Kết quả kiểm thử cho thấy hệ thống hoạt động ổn định. Các yêu cầu tạo mạng và ứng dụng đều được xử lý thành công. Các tác vụ tương tác với mạng chuỗi khối thông qua SDK nhanh và chính xác.
+Kết quả kiểm thử cho thấy hệ thống hoạt động ổn định. Các yêu cầu tạo mạng và
+ứng dụng đều được xử lý thành công. Các tác vụ tương tác với mạng chuỗi khối
+thông qua SDK nhanh và chính xác.
 
 \section{Ứng dụng của hệ thống}
 
@@ -707,7 +710,7 @@ Kết quả kiểm thử cho thấy hệ thống hoạt động ổn định. C�
 
 Fabric Contract giải quyết bài toán sử dụng công nghệ chuỗi khối để số hóa và
 minh bạch hóa quá trình ký hợp đồng giữa các doanh nghiệp, tổ chức. Công nghệ
-chuỗi khối được sử dụng như một bằng chứng không thể chối cái việc các bên liên
+chuỗi khối được sử dụng như một bằng chứng không thể chối cãi việc các bên liên
 đã đồng ý và ký vào một hợp đồng cụ thể nào đó.
 
 Cụ thể ứng dụng cho phép một tổ chức tạo một hợp đồng dưới định dạng tệp tin

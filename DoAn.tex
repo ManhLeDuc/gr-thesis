@@ -27,6 +27,7 @@
 \usepackage{fancyhdr} % Cho phép tùy biến header và footer
 % \usepackage[natbib,backend=biber,style=ieee]{biblatex} % Giúp chèn tài liệu tham khảo
 \usepackage{appendix}
+\raggedbottom
 
 \usepackage[font=small,labelfont=bf]{caption}
 
@@ -175,9 +176,11 @@
 %\subfile{chapters/0_1_subject.tex}
 
 \newpage
+\pagenumbering{gobble}
 \subfile{Chuong/0_2_Loi_cam_on.tex}
 
 \newpage
+\pagenumbering{gobble}
 \subfile{Chuong/0_3_Tom_tat_noi_dung.tex}
 
 % \newpage
@@ -198,7 +201,6 @@
     {}         % unnumbered format
     {\titlerule*[0.3pc]{.}\contentspage}         % filler-page-format, e.g dots
 
-    
 \titlecontents{section}
     [0.0cm]             % left margin
     {\vspace{0.3cm}}                  % above code
@@ -212,28 +214,28 @@
     {\thecontentslabel \ } % numbered format
     {}         % unnumbered format
     {\titlerule*[0.3pc]{.}\contentspage}         % filler-page-format, e.g dots
-
- % Tạo mục lục tự động
+% Tạo mục lục tự động
 \addtocontents{toc}{\protect\thispagestyle{empty}}
-\tableofcontents 
-\thispagestyle{empty}
-\cleardoublepage
+\tableofcontents
 
-% \pagenumbering{roman}
-%Tạo danh mục hình vẽ.
 \renewcommand{\listfigurename}{DANH MỤC HÌNH VẼ}
 {\let\oldnumberline\numberline
 \renewcommand{\numberline}{Hình~\oldnumberline}
-\listoffigures} 
+\let\origaddvspace\addvspace
+\renewcommand{\addvspace}[1]{}
+\listoffigures
+\renewcommand{\addvspace}[1]{\origaddvspace{#1}}} 
 % \phantomsection\addcontentsline{toc}{section}{\numberline {} DANH MỤC HÌNH VẼ}
 \newpage
 
-
- %Tạo danh mục bảng biểu.
+%Tạo danh mục bảng biểu.
 \renewcommand{\listtablename}{DANH MỤC BẢNG BIỂU}
 {\let\oldnumberline\numberline
 \renewcommand{\numberline}{Bảng~\oldnumberline}
-\listoftables}
+\let\origaddvspace\addvspace
+\renewcommand{\addvspace}[1]{}
+\listoftables
+\renewcommand{\addvspace}[1]{\origaddvspace{#1}}}
 % \phantomsection\addcontentsline{toc}{section}{\numberline {} DANH MỤC BẢNG BIỂU}
 
 % \glsaddall 
@@ -245,12 +247,14 @@
 % \phantomsection\addcontentsline{toc}{section}{\numberline {} DANH MỤC THUẬT NGỮ VÀ TỪ VIẾT TẮT}
 
 \newpage
+\pagenumbering{gobble}
 % \title{DANH MỤC THUẬT NGỮ VÀ TỪ VIẾT TẮT}
 % \renewcommand\bibname{TỪ VIẾT TẮT}
 % \phantomsection\addcontentsline{toc}{chapter}{TỪ VIẾT TẮT}
 \subfile{Chuong/0_5_Danh_muc_viet_tat.tex}
 
 \newpage
+\pagenumbering{gobble}
 % \renewcommand\bibname{THUẬT NGỮ}
 % \phantomsection\addcontentsline{toc}{chapter}{THUẬT NGỮ}
 \subfile{Chuong/0_6_Thuat_ngu.tex}
@@ -261,6 +265,7 @@
 \pagenumbering{arabic}
 
 \pagestyle{fancy}
+\fancypagestyle{plain}{}
 \fancyhf{}
 \fancyhead[RE, LO]{\leftmark}
 %\fancyhead[LE]{\rightmark}
